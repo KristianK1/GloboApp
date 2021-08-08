@@ -1,0 +1,77 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>loginR</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content>
+  <ion-thumbnail>
+    <ion-img src="assets/images/logo.png"></ion-img>
+  </ion-thumbnail>
+
+
+  <ion-item>
+    Register
+    <ion-toggle [(ngModel)]="mode"></ion-toggle>
+    Login
+  </ion-item>
+
+
+  <!-- <ion-icon [ngClass] = "{'logiran' : userService.logiran}" name="wifi-outline"></ion-icon> -->
+  <div *ngIf="mode==1">
+    <ion-item>
+      <ion-label>email</ion-label>
+      <ion-input id="username_id" placeholder="Enter your username" [(ngModel)]="email_login"></ion-input>
+    </ion-item>
+
+
+    <ion-item>
+      <ion-label>pass</ion-label>
+      <ion-input id="pass_id" placeholder="Enter your password" type="password" [(ngModel)]="pass_login"></ion-input>
+    </ion-item>
+
+
+    <ion-button (click)="clicked_login()">
+      Login
+    </ion-button>
+  </div>
+
+
+
+  <div *ngIf="mode==0">
+    <ion-item>
+      <ion-label>email</ion-label>
+      <ion-input id="email_id" placeholder="Enter your email" [(ngModel)]="email_reg"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>username</ion-label>
+      <ion-input id="username_id" placeholder="Enter your username" [(ngModel)]="username_reg"></ion-input>
+    </ion-item>
+
+
+    <ion-item>
+      <ion-label>pass</ion-label>
+      <ion-input id="pass_id" placeholder="Enter your password" type="password" [(ngModel)]="pass_reg"></ion-input>
+    </ion-item>
+
+
+    <div>
+      <ion-item>
+        <ion-checkbox [(ngModel)]="company"></ion-checkbox>
+        <ion-label>Register as a company</ion-label>
+      </ion-item>
+    </div>
+    
+    <div *ngIf="company==true">
+      <ion-item >
+        <ion-label>Company name</ion-label>
+        <ion-input  id="company_id" placeholder="Enter the company name" type="text" [(ngModel)]="comp_reg"></ion-input>
+      </ion-item>
+    </div>
+
+    <ion-button (click)="clicked_reg()">
+      Register
+    </ion-button>
+  </div>
+</ion-content>
