@@ -1,0 +1,7 @@
+{
+  "name": "GloboApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
