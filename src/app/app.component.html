@@ -30,6 +30,13 @@
             Add  new dish
           </ion-label>
         </ion-item> 
+        
+        <ion-item (click)="logout()" [routerLink]="['/web/new-dish']">
+          <ion-label>
+            Log out
+          </ion-label>
+        </ion-item> 
+
 
       </ion-list>
     </ion-content>

@@ -18,8 +18,8 @@ export class LoginRPage implements OnInit {
   comp_reg: string = "";
 
 
-  email_login: string="";
-  pass_login: string = "";
+  email_login: string="kk1";  // MAKNUTIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+  pass_login: string = "*****";  // MAKNUTIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII  //maximilian swartzmiller
 
   constructor(private userService: UserService) { }
 

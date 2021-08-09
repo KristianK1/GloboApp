@@ -1,16 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
-interface user {
-  companyId: number;
-  companyName: string;
-  isAdmin: number;
-  name: string;
-  userId: number;
-}
-
-interface rezultat_registracije{
-  userid : number;
+import { user } from 'src/app/interfaces/user';
+import { Router } from '@angular/router';
+interface rezultat_registracije {
+  userid: number;
 }
 
 @Injectable({
@@ -18,11 +11,11 @@ interface rezultat_registracije{
 })
 export class UserService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   url: string = "https://jupitermobiletest.jupiter-software.com:30081/jupitermobilex/gen/api/food";
   logiran: boolean = false;
-
+  user: user;
   tempID: number = -1;
 
   register(email: string, username: string, pass: string, comp: string) {
@@ -50,7 +43,7 @@ export class UserService {
           console.log(res[0].userid);
           this.register_comp(res[0].userid, comp);
         }
-        
+
       }
 
     });
@@ -72,8 +65,8 @@ export class UserService {
         }
       ]
     }).subscribe(() => {
-        console.log("registrirana kompanija");
-      
+      console.log("registrirana kompanija");
+
     });
   }
 
@@ -92,12 +85,19 @@ export class UserService {
           }
         }
       ]
-    }).subscribe((res: Array<user>) => {
+    }).subscribe((res: Array<user>) => {  //user treba bit velikim slovom
       console.log(res);
       if (res.length == 1) {
         console.log("logiran");
+        this.user = res[0];
+        console.log(this.user);
+        this.router.navigate(['/web/dashboard'], {replaceUrl: true});
       }
     });
+  }
+
+  logout() {
+    this.user = null;
   }
 
 
