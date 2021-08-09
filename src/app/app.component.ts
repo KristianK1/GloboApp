@@ -12,6 +12,7 @@ export class AppComponent {
     this.router.navigate(['login']);
   }
 
+  logiran : boolean
   async openMenu(){
     await this.menuCtrl.open();
   }
