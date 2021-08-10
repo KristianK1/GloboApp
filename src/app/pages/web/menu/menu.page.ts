@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+//import { DashMealComponent } from 'src/app/components/dash-meal/dash-meal.component';
 
 @Component({
   selector: 'app-menu',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuPage implements OnInit {
 
+
   constructor() { }
 
   ngOnInit() {
+  
   }
-
 }

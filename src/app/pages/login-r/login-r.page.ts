@@ -18,13 +18,15 @@ export class LoginRPage implements OnInit {
   comp_reg: string = "";
 
 
-  email_login: string="kk1";  // MAKNUTIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
-  pass_login: string = "*****";  // MAKNUTIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII  //maximilian swartzmiller
+  email_login: string="";  
+  pass_login: string = "";  //maximilian swartzmiller
 
   constructor(private userService: UserService) { }
 
   ngOnInit() {
     this.mode=1;
+    this.email_login="KK1"
+    this.pass_login="*****"
   }
 
 

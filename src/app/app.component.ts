@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
 import { UserService } from './services/user/user.service';
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',

@@ -8,6 +8,8 @@ import { MenuPageRoutingModule } from './menu-routing.module';
 
 import { MenuPage } from './menu.page';
 
+import { DashMealComponent } from 'src/app/components/dash-meal/dash-meal.component';
+import { WeekBarComponent } from 'src/app/components/week-bar/week-bar.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -15,6 +17,6 @@ import { MenuPage } from './menu.page';
     IonicModule,
     MenuPageRoutingModule
   ],
-  declarations: [MenuPage]
+  declarations: [MenuPage, WeekBarComponent, DashMealComponent]
 })
 export class MenuPageModule {}
