@@ -9,7 +9,7 @@ import { UserService } from 'src/app/services/user/user.service';
 export class LoginRPage implements OnInit {
   mode: number=0;
 
-  company: number=0;
+  company: boolean;
 
 
   email_reg: string="";
@@ -38,6 +38,7 @@ export class LoginRPage implements OnInit {
     
     
       this.userService.login(this.email_login, this.pass_login);
+
   }
 
   clicked_reg(){
@@ -46,16 +47,16 @@ export class LoginRPage implements OnInit {
       return;
     }
 
-    if(this.company==1 && this.comp_reg==""){
+    if(this.company && this.comp_reg==""){
       console.log("prazni argumenti - company");
       return;
     }
 
-    if(this.company==0){
+    if(!this.company){
       console.log(this.comp_reg, "BEZ KOMPANIJE");
-      this.userService.register(this.email_reg, this.username_reg, this.pass_reg, "");
+      this.userService.register(this.email_reg, this.username_reg, this.pass_reg);
     }
-    if(this.company==1){
+    if(this.company){
       console.log(this.comp_reg, "SA KOMPANIJOM");
       this.userService.register(this.email_reg, this.username_reg, this.pass_reg, this.comp_reg);
     }

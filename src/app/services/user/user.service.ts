@@ -18,7 +18,7 @@ export class UserService {
   user: user;
   tempID: number = -1;
 
-  register(email: string, username: string, pass: string, comp: string) {
+  register(email: string, username: string, pass: string, comp?: string) {
     console.log(`email: ${email}, username: ${username}, pass: ${pass}`);
 
     this.http.post(this.url, {
@@ -38,7 +38,7 @@ export class UserService {
       console.log(res);
       if (res.length == 1) {
         console.log("registriran");
-        if (comp != "") {
+        if (comp) {
           console.log("idem na kompaniju");
           console.log(res[0].userid);
           this.register_comp(res[0].userid, comp);
