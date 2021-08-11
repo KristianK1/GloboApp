@@ -1,18 +1,16 @@
 *{
-    background-color: aqua;
 
-    width:25%;
-    height:25%;
+    
 }
 
 #all{
-    width:25%;
-    height:25%;
+    max-width:25%;
+    max-height: 25%;
 }
 
 
 .DashMealImg {
-    position:fixed;
+    position:absolute;
     top: 10%;
     bottom: 10%;
     left: 5%;
@@ -23,7 +21,7 @@
 }
 
 .DashMealName {
-    position:fixed;
+    position:absolute;
     top: 10%;
     right: 5%;
 
@@ -46,7 +44,7 @@
 
 
 .DashMealDes {   
-    position:fixed;
+    position:absolute;
 
     bottom: 20%;
     right: 5%;

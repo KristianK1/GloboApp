@@ -14,8 +14,8 @@ export class DashMealQComponent implements OnInit {
 
   ngOnInit() {
     console.log("hello");
-    this.imgSrc="assets/images/jelo1.png";
-    this.jeloName="Čorba s Višnjama";
-    this.jeloDes="Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem fhgdsfhdsfklg jfg iofjgiodsfjjjjjjjjjjjjjjjjjif   g dfuhgduhg dhgdfk ghjdf jhgkdf hgdrrrrrrrrrrrrrrrrrrg Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem dsf dsf fdsfdsgr gdfs hgipsun Lorem ipsun Lorem ipsun";
+    this.imgSrc = "assets/images/jelo1.png";
+    this.jeloName = "Čorba s Višnjama";
+    this.jeloDes = "Lorem ipsun ipfg iofjgiodsfjjjjjjdf jhgkdf hgdrrrrrrrrrrrrrrrrrrg Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun";
   }
 }
