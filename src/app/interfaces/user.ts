@@ -1,4 +1,4 @@
-export interface user {
+export interface User {
     companyId: number;
     companyName: string;
     isAdmin: number;

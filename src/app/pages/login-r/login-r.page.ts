@@ -24,9 +24,11 @@ export class LoginRPage implements OnInit {
   constructor(private userService: UserService) { }
 
   ngOnInit() {
-    this.mode=1;
-    this.email_login="KK1"
-    this.pass_login="*****"
+     this.mode=1;
+    // this.email_login="KK1"
+    // this.pass_login="*****"
+    this.email_login="vedran.prpic1@gmail.com";
+    this.pass_login="lozinka";
   }
 
 

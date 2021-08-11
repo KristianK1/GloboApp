@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './guards/auth/auth.guard';
+import { RestResolverService } from './resolvers/restResolver/rest-resolver.service';
+import { RestServiceService } from './services/restService/rest-service.service';
 
 const routes: Routes = [
   {
@@ -19,10 +21,17 @@ const routes: Routes = [
         loadChildren: () => import('./pages/web/new-dish/new-dish.module').then(m => m.NewDishPageModule)
       },
     ],
+    resolve: {
+      restourant: RestResolverService
+    },
     canActivate: [AuthGuard]
   },
   {
     path: 'login',
+    loadChildren: () => import('./pages/login-r/login-r.module').then(m => m.LoginRPageModule)
+  },
+  {
+    path: '**',
     loadChildren: () => import('./pages/login-r/login-r.module').then(m => m.LoginRPageModule)
   },
 ];

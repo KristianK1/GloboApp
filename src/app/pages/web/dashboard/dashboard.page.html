@@ -52,7 +52,11 @@
       <app-dash-meal-q></app-dash-meal-q>
     </article>
   </div> -->
-  <ion-grid class="gridB">
+
+
+
+  <!-- ovo valja -->
+  <!-- <ion-grid class="gridB">
     <ion-row>
       <ion-col >
         <app-dash-meal-q></app-dash-meal-q>
@@ -77,8 +81,17 @@
         <app-dash-meal-q></app-dash-meal-q>
       </ion-col>
     </ion-row>
-    
-    
-    
+  
+  </ion-grid> -->
+
+
+    <ion-grid class="gridB">
+    <ion-row>
+      <ion-col *ngFor="let order of orders" sizeLg="3" sizeMd="4" sizeSm="6">
+        <app-dash-meal-q [order]="order"></app-dash-meal-q>
+      </ion-col>
+      
+    </ion-row>
+  
   </ion-grid>
 </ion-content>

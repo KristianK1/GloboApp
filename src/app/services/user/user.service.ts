@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { user } from 'src/app/interfaces/user';
+import { User } from 'src/app/interfaces/user';
 import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 interface rezultat_registracije {
   userid: number;
 }
@@ -15,7 +16,9 @@ export class UserService {
 
   url: string = "https://jupitermobiletest.jupiter-software.com:30081/jupitermobilex/gen/api/food";
   logiran: boolean = false;
-  user: user;
+  user: User;
+  _user: BehaviorSubject<User> = new BehaviorSubject<User>(null);
+
   tempID: number = -1;
 
   register(email: string, username: string, pass: string, comp?: string) {
@@ -71,6 +74,7 @@ export class UserService {
   }
 
   login(username: string, pass: string) {
+
     console.log("username: ", username, " password: ", pass);
 
     this.http.post(this.url, {
@@ -85,11 +89,12 @@ export class UserService {
           }
         }
       ]
-    }).subscribe((res: Array<user>) => {  //user treba bit velikim slovom
+    }).subscribe((res: Array<User>) => {  //user treba bit velikim slovom
       console.log(res);
       if (res.length == 1) {
         console.log("logiran");
         this.user = res[0];
+        this._user.next(res[0]);
         console.log(this.user);
         this.router.navigate(['/web/dashboard'], {replaceUrl: true});
       }
@@ -97,8 +102,15 @@ export class UserService {
   }
 
   logout() {
+    this._user.next(null);
     this.user = null;
   }
 
+  isCompany(): number{
+    if(this.user!=null){
+      if(this.user.companyId!=null) return 98;
+    }
+    return 99;
+  }
 
 }
