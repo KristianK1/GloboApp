@@ -6,10 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard.page.scss'],
 })
 export class DashboardPage implements OnInit {
-
+  field: number[];
   constructor() { }
 
   ngOnInit() {
+    this.field=[1,2,3,4,5,6];
   }
 
 }

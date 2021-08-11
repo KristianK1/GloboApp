@@ -12,22 +12,17 @@
     left: 10%;
     height: 20%;
     width: 40%;
-
 }
 
 .TopRight {
-
     position: absolute;
     top: 0%;
     right: 10%;
     height: 20%;
     width: 40%;
-    
-    
 }
 
-.searchDiv{
-
+.searchDiv {
     text-align: center;
 
     display: flex;
@@ -49,8 +44,7 @@
     height: 60%;
 }
 
-.subtitle{
-
+.subtitle {
     text-align: center;
 
     display: flex;
@@ -61,8 +55,7 @@
     height: 20%;
 }
 
-.underText{
-
+.underText {
     text-align: center;
 
     display: flex;
@@ -73,19 +66,31 @@
     height: 20%;
 }
 
-.left{
+.left {
     position: absolute;
-    top: 20%;
+    bottom: 20%;
     left: 10%;
-    height: 20%;
+    height: 50%;
     width: 40%;
 }
 
-
-.right{
+.right {
     position: absolute;
-    top: 20%;
+    bottom: 20%;
     right: 10%;
-    height: 20%;
+    height: 50%;
     width: 40%;
+}
+
+.meal{
+    height: 20%;
+}
+
+.btMeal{
+     position: absolute;
+     bottom: 6%;
+     left: 15%;
+     width: 30%;
+     height: 9%;
+     background-color: lime;
 }

@@ -1,10 +1,18 @@
 *{
-    background-color: gray;
+    background-color: aqua;
+
+    width:25%;
+    height:25%;
+}
+
+#all{
+    width:25%;
+    height:25%;
 }
 
 
 .DashMealImg {
-    position:absolute;
+    position:fixed;
     top: 10%;
     bottom: 10%;
     left: 5%;
@@ -15,7 +23,7 @@
 }
 
 .DashMealName {
-    position:absolute;
+    position:fixed;
     top: 10%;
     right: 5%;
 
@@ -38,13 +46,32 @@
 
 
 .DashMealDes {   
-    position:absolute;
+    position:fixed;
 
-    bottom: 10%;
+    bottom: 20%;
     right: 5%;
 
     font-size: 15px;
     text-align: justify;
     width: 45%;
-    height: 55%;
+    height: 45%;
+}
+
+.DashMealButton{
+    position:absolute;
+
+    bottom: 3%;
+    right: 3%;
+
+    font-size: 15px;
+    text-align: justify;
+    width: 30%;
+    height: 7%;
+
+    text-align: center;
+
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
 }

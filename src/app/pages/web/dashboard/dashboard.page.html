@@ -4,8 +4,21 @@
   </ion-toolbar>
 </ion-header> -->
 
-<ion-content>
+<ion-content class="all">
   <div class="weekbar">
     <app-week-bar></app-week-bar>
   </div>
+
+
+  <div class="title">
+    ORDERS REVIEW
+  </div>
+
+  <div class="gridB">
+    <div class="single" *ngFor="let i of field">
+      hello777
+      <app-dash-meal-q style="width: 40%;"></app-dash-meal-q>
+    </div>
+  </div>
+
 </ion-content>

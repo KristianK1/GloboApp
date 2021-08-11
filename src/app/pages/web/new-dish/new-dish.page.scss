@@ -1,0 +1,31 @@
+#newItem{
+    align-items: center;
+
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+
+}
+
+#title{
+    size: 60px;
+    text-align: center;
+    margin: 10%;
+}
+
+#box{
+    
+    flex: 1fr;
+    margin: 50px 35% 0 35%;
+    
+    align-content: center;
+}
+
+#kutija{
+    width: 100%;
+    align-content: center;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+}

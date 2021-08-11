@@ -1,8 +1,8 @@
-<ion-header>
+<!-- <ion-header>
   <ion-toolbar>
     <ion-title>menu</ion-title>
   </ion-toolbar>
-</ion-header>
+</ion-header> -->
 
 <ion-content>
   <div class="weekbar">
@@ -24,9 +24,9 @@
   </div>
 
   <div class="left">
-    <app-dash-meal></app-dash-meal>
-
-    <app-dash-meal></app-dash-meal>
+    <div class="meal">
+      <app-dash-meal></app-dash-meal>
+    </div>
   </div>
 
 
@@ -46,8 +46,14 @@
 
 
   <div class="right">
-    <app-dash-meal></app-dash-meal>
-
-    <app-dash-meal></app-dash-meal>
+    <div class="meal">
+      <app-dash-meal></app-dash-meal>
+    </div>
   </div>
+
+
+  <button class="btMeal">
+    ADD NEW MEAL
+
+  </button>
 </ion-content>
