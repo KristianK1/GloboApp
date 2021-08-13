@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { User } from 'src/app/interfaces/user';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
+import { StorageService } from '../storage/storage.service';
 interface rezultat_registracije {
   userid: number;
 }
@@ -12,11 +13,11 @@ interface rezultat_registracije {
 })
 export class UserService {
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router, private storageService: StorageService) { }
 
   url: string = "https://jupitermobiletest.jupiter-software.com:30081/jupitermobilex/gen/api/food";
   logiran: boolean = false;
-  user: User;
+  user: User;  //svaki user zamjenit sa _user u ostalim fajlovima
   _user: BehaviorSubject<User> = new BehaviorSubject<User>(null);
 
   tempID: number = -1;
@@ -74,7 +75,6 @@ export class UserService {
 
   login(username: string, pass: string) {
 
-
     this.http.post(this.url, {
       "db": "Food",
       "queries": [
@@ -93,12 +93,17 @@ export class UserService {
         console.log("logiran");
         this.user = res[0];
         this._user.next(res[0]);
+      
+        this.storageService.setData("user", this.user);
+        
         this.router.navigate(['/web/dashboard'], {replaceUrl: true});
+        
       }
     });
   }
 
   logout() {
+    this.storageService.removeData("user");
     this._user.next(null);
     this.user = null;
   }

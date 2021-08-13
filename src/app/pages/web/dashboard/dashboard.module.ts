@@ -8,7 +8,6 @@ import { DashboardPageRoutingModule } from './dashboard-routing.module';
 
 import { DashboardPage } from './dashboard.page';
 
-import { DashMealComponent } from 'src/app/components/dash-meal/dash-meal.component';
 import { WeekBarComponent } from 'src/app/components/week-bar/week-bar.component';
 import { DashMealQComponent } from 'src/app/components/dash-meal-q/dash-meal-q.component';
 @NgModule({
@@ -18,6 +17,6 @@ import { DashMealQComponent } from 'src/app/components/dash-meal-q/dash-meal-q.c
     IonicModule,
     DashboardPageRoutingModule
   ],
-  declarations: [DashboardPage, DashMealComponent, WeekBarComponent, DashMealQComponent],
+  declarations: [DashboardPage, WeekBarComponent, DashMealQComponent],
 })
 export class DashboardPageModule {}
