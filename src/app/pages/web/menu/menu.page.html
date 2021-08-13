@@ -5,8 +5,13 @@
 </ion-header> -->
 
 <ion-content>
-  <div class="weekbar">
-    <app-week-bar></app-week-bar>
+  <div class="days">
+    <div class="day">
+      <img class="logo" src="assets/images/logo.png" alt="">
+    </div>
+    <div [ngClass]="{'day': true, 'active-day': day == currentDay}" *ngFor="let day of days" color="primary" (click)="changeDay(day)">
+      <span><h2>{{daysNames[day]}}</h2></span>
+    </div>
   </div>
 
   <div class="TopLeft">
@@ -24,9 +29,17 @@
   </div>
 
   <div class="left">
-    <div class="meal">
-      <app-dash-meal></app-dash-meal>
-    </div>
+    <!-- <div class="meal"> -->
+      <ion-grid class="gridB">
+      <ion-row>
+        <ion-col *ngFor="let order of meals1" size="12" class="single" (click)="addDay(order.DishId)" >
+          <app-dash-meal [order]="order"></app-dash-meal>
+        </ion-col>
+        
+      </ion-row>
+    
+    </ion-grid>
+    <!-- </div> -->
   </div>
 
 
@@ -46,9 +59,15 @@
 
 
   <div class="right">
-    <div class="meal">
-      <app-dash-meal></app-dash-meal>
-    </div>
+    <ion-grid class="gridB">
+      <ion-row>
+        <ion-col *ngFor="let order of meals2" size="12" class="single" (click)="deleteDay(order.DishId)">
+          <app-dash-meal [order]="order"></app-dash-meal>
+        </ion-col>
+        
+      </ion-row>
+    
+    </ion-grid>
   </div>
 
 

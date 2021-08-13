@@ -1,10 +1,56 @@
-.weekbar {
-    position: absolute;
-    top: 0%;
-    left: 0%;
-    width: 8%;
-    height: 95%;
+.days {
+    float: left;
+    width: 7%;
+    height: 100%;
+    background-color: #1CBA5B;
 }
+.day {
+    width: 100%;
+    height: (100%/6);
+    padding: 20px;
+    float: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white; 
+    font-weight: bolder;
+    cursor: pointer;
+}
+.active-day {
+    color:  #1CBA5B;
+    background-color: white;
+}
+
+
+
+.gridB{
+    display: inline-grid;
+    
+    // grid-template-columns: auto auto auto;
+    // grid-template-rows: auto auto auto;
+    position: absolute;
+     left:5%;
+     top:5%;
+     width: 90%;
+     height: 87%;
+    overflow:auto;
+    justify-content:flex-start;
+    box-sizing: content-box;
+    margin: 0%;
+}
+
+.single{
+     position:inherit;
+     left:2%;
+     right:2%;
+    //  clear: both;
+     //width: 10%;
+    //height: 35%;
+    margin: 0%;
+    background-color: gray;
+}
+
+
 
 .TopLeft {
     position: absolute;
@@ -67,11 +113,12 @@
 }
 
 .left {
-    position: absolute;
+    position:absolute;
     bottom: 20%;
     left: 10%;
     height: 50%;
     width: 40%;
+    background-color: #1CBA5B;
 }
 
 .right {
@@ -80,6 +127,8 @@
     right: 10%;
     height: 50%;
     width: 40%;
+    background-color: #1CBA5B;
+
 }
 
 .meal{

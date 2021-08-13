@@ -12,37 +12,29 @@
 
     <ion-item>
       <ion-label>Meal name</ion-label>
-      <ion-input>
+      <ion-input [(ngModel)]="name">
 
       </ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label>Meal description</ion-label>
-      <ion-input>
+      <ion-input [(ngModel)]="des">
 
       </ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label>Salata</ion-label>
-      <ion-checkbox></ion-checkbox>
+      <ion-checkbox [(ngModel)]="salad"></ion-checkbox>
+    </ion-item>
+    <ion-item>
+      <ion-label>Kruh</ion-label>
+      <ion-checkbox [(ngModel)]="bread"></ion-checkbox>
     </ion-item>
     <ion-item>
       <ion-label>Juha</ion-label>
-      <ion-checkbox></ion-checkbox>
-    </ion-item>
-    <ion-item>
-      <ion-label>Palačinke</ion-label>
-      <ion-checkbox></ion-checkbox>
-    </ion-item>
-    <ion-item>
-      <ion-label>Lepinja</ion-label>
-      <ion-checkbox></ion-checkbox>
-    </ion-item>
-    <ion-item>
-      <ion-label>Pomfrit</ion-label>
-      <ion-checkbox></ion-checkbox>
+      <ion-checkbox [(ngModel)]="soup"></ion-checkbox>
     </ion-item>
 
     <ion-item id="kutija">
@@ -56,7 +48,7 @@
     </ion-item>
 
     <ion-item id="kutija">
-      <ion-button>Save</ion-button>
+      <ion-button (click)="save()">Save</ion-button>
       <ion-button>Cancel</ion-button>
     </ion-item>
 

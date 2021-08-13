@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { DishDetail } from 'src/app/interfaces/dish-detail';
+import { Order } from 'src/app/interfaces/Order';
 
 @Component({
   selector: 'app-dash-meal',
@@ -6,16 +8,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dash-meal.component.scss'],
 })
 export class DashMealComponent implements OnInit {
-  imgSrc: string;
-  jeloName: string;
-  jeloDes: string;
+  @Input() order: DishDetail;
+
+  imgSrc: string="";
+  jeloName: string="";
+  jeloDes: string="";
 
   constructor() { }
 
   ngOnInit() {
     this.imgSrc="assets/images/jelo1.png";
-    this.jeloName="Čorba s Višnjama";
-    this.jeloDes="Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem fhgdsfhdsfklg jfg iofjgiodsfjjjjjjjjjjjjjjjjjif   g dfuhgduhg dhgdfk ghjdf jhgkdf hgdrrrrrrrrrrrrrrrrrrg Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem dsf dsf fdsfdsgr gdfs hgipsun Lorem ipsun Lorem ipsun";
+    this.jeloName=this.order.Name;
+    this.jeloDes= "Salata: "+this.order.soup + "  Bread: " + this.order.bread +" Supa: " + this.order.soup;;
   }
 
 }

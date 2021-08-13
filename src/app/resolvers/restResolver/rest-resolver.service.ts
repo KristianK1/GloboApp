@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
-import { Observable } from 'rxjs';
+
 import { RestServiceService } from 'src/app/services/restService/rest-service.service';
 import { UserService } from 'src/app/services/user/user.service';
 

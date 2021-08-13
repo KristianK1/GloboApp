@@ -53,7 +53,6 @@ export class UserService {
   }
 
   register_comp(id: number, comp: string) {
-    console.log(id, comp);
     this.http.post(this.url, {
       "db": "Food",
       "queries": [
@@ -67,15 +66,14 @@ export class UserService {
           }
         }
       ]
-    }).subscribe(() => {
+    }).subscribe((res: string) => {
       console.log("registrirana kompanija");
-
+      console.log(res);
     });
   }
 
   login(username: string, pass: string) {
 
-    console.log("username: ", username, " password: ", pass);
 
     this.http.post(this.url, {
       "db": "Food",
@@ -95,7 +93,6 @@ export class UserService {
         console.log("logiran");
         this.user = res[0];
         this._user.next(res[0]);
-        console.log(this.user);
         this.router.navigate(['/web/dashboard'], {replaceUrl: true});
       }
     });

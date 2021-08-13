@@ -5,9 +5,20 @@
 </ion-header> -->
 
 <ion-content class="all">
-  <div class="weekbar">
-    <app-week-bar></app-week-bar>
+  <div class="days">
+    <div class="day">
+      <img class="logo" src="assets/images/logo.png" alt="">
+    </div>
+    <div [ngClass]="{'day': true, 'active-day': day == currentDay}" *ngFor="let day of days" color="primary"
+      (click)="changeDay(day)">
+      <span>
+        <h2>{{daysNames[day]}}</h2>
+      </span>
+    </div>
   </div>
+
+
+
 
 
   <div class="title">
@@ -85,13 +96,13 @@
   </ion-grid> -->
 
 
-    <ion-grid class="gridB">
+  <ion-grid class="gridB">
     <ion-row>
       <ion-col *ngFor="let order of orders" sizeLg="3" sizeMd="4" sizeSm="6">
         <app-dash-meal-q [order]="order"></app-dash-meal-q>
       </ion-col>
-      
+
     </ion-row>
-  
+
   </ion-grid>
 </ion-content>

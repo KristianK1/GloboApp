@@ -1,5 +1,12 @@
-<ion-img src="assets/images/jelo1.png" class="DashMealImg"></ion-img>
-<div class="DashMealName">
-    {{jeloName}}
-</div>
-<div class="DashMealDes">{{jeloDes}}</div>
+<ion-item>
+    <ion-thumbnail slot="start">
+      <img src="assets/images/jelo1.png">
+    </ion-thumbnail>
+    
+    <ion-label class="ion-text-wrap">
+      <h2>{{jeloName}}</h2>
+      <p>{{jeloDes}}</p>
+      <!-- <ion-button fill="outline" slot="end">View</ion-button> -->
+    </ion-label>
+  </ion-item>
+  

@@ -9,35 +9,42 @@ import { RestServiceService } from 'src/app/services/restService/rest-service.se
   styleUrls: ['./dashboard.page.scss'],
 })
 export class DashboardPage implements OnInit {
-  day: number = 1;
-
-  dani: string[] = ["Ponedeljak", "Utorak", "Srijeda", "Četvrtak", "Petak"];
-
+  currentDay: number = 1;
+  days: Array<number>=[0,1,2,3,4];
+  daysHrv: string[] = ["Ponedjeljak", "Utorak", "Srijeda", "Četvrtak", "Petak"];
+  daysNames: string[] = ["PON", "UTO", "SRI", "ČET", "PET"];
 
   orders: Array<Order> = [];
-  _orders: BehaviorSubject<Array<Order>> = new BehaviorSubject<Array<Order>>(null);
+  //_orders: BehaviorSubject<Array<Order>> = new BehaviorSubject<Array<Order>>(null);
 
   constructor(private restService: RestServiceService) {
 
   }
 
   ngOnInit() {
+    this.currentDay=0;
     this.restService._orders.subscribe(val => {
-      console.log("promjena vrijednosti ordera", val);
+     // console.log("promjena vrijednosti ordera", val);
 
       this.orders = val;
-      this.orders=this.orders.filter(o => o.jelo == "Hamburger");  //zgazeno
-      console.log(this.orders.length);
+
+      this.orders = this.orders.filter(o => o.dan == this.daysHrv[this.currentDay]);  //zgazeno
+      //console.log(this.orders.length);
 
     });
   }
-  ChangeDay(d: number) {
-    this.day = d;
-    this.orders = this._orders.getValue();
-
-    this.orders.filter(o => o.dan == this.dani[this.day - 1]);
-    console.log(this.orders.length);
+  changeDay(d: number) {
+    
+    console.log(d);
+    this.currentDay = d;
+    this.orders = this.restService._orders.getValue();
+    console.log("ovdje");
+    if (this.orders != null) {
+      this.orders=this.orders.filter(o => o.dan == this.daysHrv[this.currentDay]);
+      console.log(this.orders);
+    }
   }
+
 
 
 }
