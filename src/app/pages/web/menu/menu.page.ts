@@ -20,7 +20,7 @@ export class MenuPage implements OnInit {
 
   mealsGrid1: Array<Order> = [];
   mealsGrid2: Array<Order> = [];
-  
+
 
   meals1: Array<DishDetail> = [];
   meals2: Array<DishDetail> = [];
@@ -32,9 +32,9 @@ export class MenuPage implements OnInit {
   ngOnInit() {
     //podesit mealove odma
     this.restService._dishDetails.subscribe(val => {
-     // console.log("promjena vrijednosti svih mealsova", val);
+      // console.log("promjena vrijednosti svih mealsova", val);
 
-     // console.log.apply("UPDATEEE");
+      // console.log.apply("UPDATEEE");
       this.updateStuff(val);
 
     });
@@ -48,9 +48,9 @@ export class MenuPage implements OnInit {
     for (let i: number = 0; i < val.length; i++) {
       let ima: boolean = false;
 
-      for (let j: number = 0; j < this.meals1.length || this.meals1.length==0; j++) {
-        if(this.meals1.length==0){
-          ima=false;
+      for (let j: number = 0; j < this.meals1.length || this.meals1.length == 0; j++) {
+        if (this.meals1.length == 0) {
+          ima = false;
           break;
         }
 
@@ -58,7 +58,7 @@ export class MenuPage implements OnInit {
           ima = true;
         }
       }
-      for(let j:number=0;j<this.meals2.length;j++){
+      for (let j: number = 0; j < this.meals2.length; j++) {
 
         if (val[i].DishId == this.meals2[j].DishId) {
           ima = true;
@@ -112,22 +112,22 @@ export class MenuPage implements OnInit {
     return ret;
   }
 
-  deleteDay(id: number){
+  deleteDay(id: number) {
     console.log("brisem" + id);
-    this.restService.deleteFromDay(id,this.currentDay);
+    this.restService.deleteFromDay(id, this.currentDay);
     this.restService._dishDetails.getValue();
     //console.log(this.meals1);
     //console.log(this.meals2);
-    this.restService.initCompanyUsers();
+    //this.restService.initCompanyUsers();
 
   }
 
-  addDay(id: number){
-    this.restService.addToDay(id,this.currentDay);
+  addDay(id: number) {
+    this.restService.addToDay(id, this.currentDay);
     this.restService._dishDetails.getValue();
-    this.restService.initCompanyUsers();
+    //this.restService.initCompanyUsers();
     //console.log(this.meals1);
     //console.log(this.meals2);
-    
+
   }
 }

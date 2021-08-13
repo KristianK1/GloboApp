@@ -87,6 +87,7 @@ export class RestServiceService {
     }).subscribe((res: any) => {  //user treba bit velikim slovom
       console.log("added meal" + res);
       
+    this.initCompanyUsers();
     });
   }
 
@@ -106,6 +107,7 @@ export class RestServiceService {
       ]
     }).subscribe((res: any) => {  //user treba bit velikim slovom
       console.log("deleted meal" + res);
+      this.initCompanyUsers();
       
     });
 

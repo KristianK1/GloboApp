@@ -39,6 +39,7 @@ export class NewDishPage implements OnInit {
               "soup": this.soup,
               "salad": this.salad,
               "bread": this.bread,
+              "description": this.des,
               "userid": this.user.user.userId
           }
       }
