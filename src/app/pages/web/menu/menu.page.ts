@@ -12,11 +12,12 @@ import { RestServiceService } from 'src/app/services/restService/rest-service.se
   styleUrls: ['./menu.page.scss'],
 })
 export class MenuPage implements OnInit {
-  currentDay: number = 0;
-  days: Array<number> = [0, 1, 2, 3, 4];
+  currentDay: number = 1;
+  days: Array<number> = [1, 2, 3, 4, 5];
   daysHrv: string[] = ["Ponedjeljak", "Utorak", "Srijeda", "Četvrtak", "Petak"];
   daysNames: string[] = ["PON", "UTO", "SRI", "ČET", "PET"];
 
+  searchStr: string = "";
 
   mealsGrid1: Array<Order> = [];
   mealsGrid2: Array<Order> = [];
@@ -25,6 +26,10 @@ export class MenuPage implements OnInit {
   meals1: Array<DishDetail> = [];
   meals2: Array<DishDetail> = [];
 
+  totalMeal: Array<DishDetail> = [];
+
+  searchedMeals: Array<DishDetail> = [];
+
   url: string = "https://jupitermobiletest.jupiter-software.com:30081/jupitermobilex/gen/api/food";
 
   constructor(private restService: RestServiceService, private http: HttpClient) { }
@@ -32,20 +37,22 @@ export class MenuPage implements OnInit {
   ngOnInit() {
     //podesit mealove odma
     this.restService._dishDetails.subscribe(val => {
-      // console.log("promjena vrijednosti svih mealsova", val);
-
-      // console.log.apply("UPDATEEE");
       this.updateStuff(val);
-
     });
   }
 
   updateStuff(val: Array<DishDetail>) {
+    if(val)
+      this.totalMeal = val;
+
+    this.searchedMeals = this.totalMeal.filter(o => o.Name.includes(this.searchStr));
+    
+    
     this.meals1 = [];
     //this.meals1 = this.meals1.filter(o => o.dan == this.daysHrv[this.currentDay]);  //zgazeno
-    this.meals2 = val.filter(o => o.day == this.currentDay);
+    this.meals2 = this.searchedMeals.filter(o => o.day == this.currentDay);
 
-    for (let i: number = 0; i < val.length; i++) {
+    for (let i: number = 0; i < this.searchedMeals.length; i++) {
       let ima: boolean = false;
 
       for (let j: number = 0; j < this.meals1.length || this.meals1.length == 0; j++) {
@@ -54,18 +61,18 @@ export class MenuPage implements OnInit {
           break;
         }
 
-        if (val[i].DishId == this.meals1[j].DishId) {
+        if (this.searchedMeals[i].DishId == this.meals1[j].DishId) {
           ima = true;
         }
       }
       for (let j: number = 0; j < this.meals2.length; j++) {
 
-        if (val[i].DishId == this.meals2[j].DishId) {
+        if (this.searchedMeals[i].DishId == this.meals2[j].DishId) {
           ima = true;
         }
       }
       if (ima == false) {
-        this.meals1.push(val[i]);
+        this.meals1.push(this.searchedMeals[i]);
         //break;
       }
     }
@@ -129,5 +136,10 @@ export class MenuPage implements OnInit {
     //console.log(this.meals1);
     //console.log(this.meals2);
 
+  }
+
+  search() {
+    console.log("search input changed" + this.searchStr);
+    this.updateStuff(null);
   }
 }

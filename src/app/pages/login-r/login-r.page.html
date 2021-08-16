@@ -20,15 +20,17 @@
     <!-- <ion-icon [ngClass] = "{'logiran' : userService.logiran}" name="wifi-outline"></ion-icon> -->
     <div *ngIf="mode==1">
       <ion-item>
-        <ion-label>email</ion-label>
+        <ion-label position="floating">email</ion-label>
         <ion-input id="username_id" placeholder="Enter your username" [(ngModel)]="email_login"></ion-input>
       </ion-item>
 
 
       <ion-item>
-        <ion-label>pass</ion-label>
-        <ion-input id="pass_id" placeholder="Enter your password" type="password" [(ngModel)]="pass_login"></ion-input>
-      </ion-item>
+        <ion-label position="floating">pass</ion-label>
+        
+          <ion-input id="pass_id" placeholder="Enter your password" type="password" [(ngModel)]="pass_login"></ion-input>
+        
+        </ion-item>
 
       <ion-item class="flexK">
         <ion-button (click)="clicked_login()">
@@ -41,18 +43,18 @@
 
     <div *ngIf="mode==0">
       <ion-item>
-        <ion-label>email</ion-label>
-        <ion-input id="email_id" placeholder="Enter your email" [(ngModel)]="email_reg"></ion-input>
+        <ion-label position="floating">email</ion-label>
+        <ion-input id="email_id" placeholder="Enter your email" type="email" [(ngModel)]="email_reg"></ion-input>
       </ion-item>
 
       <ion-item>
-        <ion-label>username</ion-label>
+        <ion-label position="floating">username</ion-label>
         <ion-input id="username_id" placeholder="Enter your username" [(ngModel)]="username_reg"></ion-input>
       </ion-item>
 
 
       <ion-item>
-        <ion-label>pass</ion-label>
+        <ion-label position="floating">pass</ion-label>
         <ion-input id="pass_id" placeholder="Enter your password" type="password" [(ngModel)]="pass_reg"></ion-input>
       </ion-item>
 
@@ -66,7 +68,7 @@
 
       <div *ngIf="company">
         <ion-item>
-          <ion-label>Company name</ion-label>
+          <ion-label position="floating">Company name</ion-label>
           <ion-input id="company_id" placeholder="Enter the company name" type="text" [(ngModel)]="comp_reg">
           </ion-input>
         </ion-item>

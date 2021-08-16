@@ -12,7 +12,7 @@
     <div [ngClass]="{'day': true, 'active-day': day == currentDay}" *ngFor="let day of days" color="primary"
       (click)="changeDay(day)">
       <span>
-        <h2>{{daysNames[day]}}</h2>
+        <h2>{{daysNames[day-1]}}</h2>
       </span>
     </div>
   </div>
@@ -26,7 +26,7 @@
   </div>
 
   <div class="searchDiv">
-    <ion-searchbar showCancelButton="focus"></ion-searchbar>
+      <ion-searchbar showCancelButton="focus" (ionChange)=search() [(ngModel)]="searchStr"></ion-searchbar>
   </div>
 
   <!-- <div >

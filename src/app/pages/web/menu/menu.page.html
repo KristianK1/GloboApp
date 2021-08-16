@@ -10,7 +10,7 @@
       <img class="logo" src="assets/images/logo.png" alt="">
     </div>
     <div [ngClass]="{'day': true, 'active-day': day == currentDay}" *ngFor="let day of days" color="primary" (click)="changeDay(day)">
-      <span><h2>{{daysNames[day]}}</h2></span>
+      <span><h2>{{daysNames[day-1]}}</h2></span>
     </div>
   </div>
 
@@ -45,7 +45,7 @@
 
   <div class="TopRight">
     <div class="searchDiv">
-      <ion-searchbar showCancelButton="focus"></ion-searchbar>
+      <ion-searchbar showCancelButton="focus" (ionChange)=search() [(ngModel)]="searchStr"></ion-searchbar>
     </div>
 
     <div class=subtitle>
