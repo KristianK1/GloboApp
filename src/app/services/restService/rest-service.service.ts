@@ -6,8 +6,10 @@ import { DishForCompanyResult } from 'src/app/interfaces/dish-for-company-result
 import { DishMenuForCompanyResult } from 'src/app/interfaces/dish-menu-for-company-result';
 import { GetAllMenusResult } from 'src/app/interfaces/get-all-menus-result';
 import { Order } from 'src/app/interfaces/Order';
+import { Restourant } from 'src/app/interfaces/restourant';
+import { MenuDish } from 'src/app/interfaces/restourant';
 import { UserService } from '../user/user.service';
-
+import {map} from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
@@ -19,7 +21,12 @@ export class RestServiceService {
 
   _orders: BehaviorSubject<Array<Order>> = new BehaviorSubject<Array<Order>>(null);
 
-  _dishDetails: BehaviorSubject<Array<DishDetail>> = new BehaviorSubject<Array<DishDetail>>(null);
+  _dishDetails: BehaviorSubject<Array<DishDetail>> = new BehaviorSubject([]);
+
+  _allRestaurants: BehaviorSubject<Array<Restourant>> = new BehaviorSubject<Array<Restourant>>(null);
+   
+
+
 
   initCompanyUsers(): Promise<boolean> {
     return this.http.post(this.url, {
@@ -113,8 +120,44 @@ export class RestServiceService {
 
 
   }
-  initCustomersUsers(): boolean {
-    return true;
+
+
+
+
+
+
+
+  initCustomersUsers() {
+    return this.http.post(this.url, {
+      "db": "Food",
+      "queries": [
+        {
+          "query": "spCompany",
+          "params": {
+              "@action": "all"
+          }, tablename: "allRes"
+      },
+      {
+          "query": "spMenu",
+          "params": {
+              "action": "all"
+          }, tablename: "allMenus"
+      }, 
+      ]
+    }).pipe(map(( val : {
+      allRes :Restourant[];
+      allMenus: MenuDish[];
+    }) => {
+      if(val.allRes.length>0){
+        const x = val.allRes.map(r => ({
+          companyId: r.companyId,
+          name: r.name,
+          menus: [1,2,3,4,5].map(d => val.allMenus.filter(m => m.companyId === r.companyId && m.day === d)),
+        }));
+        this._allRestaurants.next(x);
+        //return this._allRestaurants.getValue();
+      }
+    }));
   }
 
 

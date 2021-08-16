@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { MenuController } from '@ionic/angular'
+import { MenuController, Platform } from '@ionic/angular'
 import { StorageService } from './services/storage/storage.service';
 import { UserService } from './services/user/user.service';
 
@@ -10,7 +10,7 @@ import { UserService } from './services/user/user.service';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor(private menuCtrl: MenuController, private router: Router, private userService: UserService, private storageService: StorageService) {
+  constructor(private menuCtrl: MenuController, private router: Router, private userService: UserService, private storageService: StorageService, private platform: Platform) {
     // this.router.navigate(['login']);
     console.log(this.router.url);
     this.appInit();
@@ -18,7 +18,12 @@ export class AppComponent {
    
   }
 
+  isMobileX: Boolean = false;
+
   async appInit(){
+    this.userService.isMobile=this.platform.is('mobileweb') || this.platform.is('mobile');
+    this.isMobileX=this.userService.isMobile;
+
     this.userService._user.subscribe(val =>{
       this.logiran=val != null;
       console.log("serbscribe");
@@ -28,7 +33,8 @@ export class AppComponent {
     if(rez){
       this.userService.user=rez;
       this.userService._user.next(rez);
-      this.router.navigate(['/web/dashboard'], {replaceUrl: true});
+      this.router.navigate(['/' + (this.userService.isMobile? 'mobile/tabs'  : 'web') + '/dashboard'], {replaceUrl: true});
+      //this.router.navigate(['/web/dashboard'], {replaceUrl: true});
     }
   }
 

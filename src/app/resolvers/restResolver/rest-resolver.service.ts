@@ -14,10 +14,12 @@ export class RestResolverService implements Resolve<boolean> {
   async resolve(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot,
-  ): Promise<boolean>{
-    if(this.userService.isCompany()!==2){
+  ): Promise<any> {
+    if (this.userService.isMobile == false) {
       return await this.restService.initCompanyUsers();
     }
-    else  this.restService.initCustomersUsers();
+    else {
+      return await this.restService.initCustomersUsers().toPromise();
+    }
   }
 }

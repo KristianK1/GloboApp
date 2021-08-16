@@ -6,6 +6,23 @@ import { RestServiceService } from './services/restService/rest-service.service'
 
 const routes: Routes = [
   {
+    path: 'mobile',
+    children: [
+      {
+        path: 'tabs',
+        loadChildren: () => import('./pages/mobile/tabs/tabs.module').then( m => m.TabsPageModule)
+      },
+      {
+        path: 'restourant',
+        loadChildren: () => import('./pages/mobile/restourant/restourant.module').then( m => m.RestourantPageModule)
+      },
+      
+    ], resolve: {
+      restourant: RestResolverService
+    },
+    canActivate: [AuthGuard]
+  },
+  {
     path: 'web',
     children: [
       {
@@ -20,6 +37,7 @@ const routes: Routes = [
         path: 'new-dish',
         loadChildren: () => import('./pages/web/new-dish/new-dish.module').then(m => m.NewDishPageModule)
       },
+
     ],
     resolve: {
       restourant: RestResolverService
@@ -34,6 +52,11 @@ const routes: Routes = [
     path: '**',
     loadChildren: () => import('./pages/login-r/login-r.module').then(m => m.LoginRPageModule)
   },
+  {
+    path: 'restourant',
+    loadChildren: () => import('./pages/mobile/restourant/restourant.module').then( m => m.RestourantPageModule)
+  },
+
 ];
 @NgModule({
   imports: [

@@ -20,6 +20,8 @@ export class UserService {
   user: User;  //svaki user zamjenit sa _user u ostalim fajlovima
   _user: BehaviorSubject<User> = new BehaviorSubject<User>(null);
 
+  isMobile: boolean;
+
   tempID: number = -1;
 
   register(email: string, username: string, pass: string, comp?: string) {
@@ -96,7 +98,7 @@ export class UserService {
       
         this.storageService.setData("user", this.user);
         
-        this.router.navigate(['/web/dashboard'], {replaceUrl: true});
+        this.router.navigate(['/' + (this.isMobile? 'mobile/tabs'  : 'web') + '/dashboard'], {replaceUrl: true});
         
       }
     });

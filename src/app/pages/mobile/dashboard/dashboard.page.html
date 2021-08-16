@@ -1,0 +1,14 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>dashboard</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-searchbar showCancelButton="focus" (ionChange)=search() [(ngModel)]="searchStr"></ion-searchbar>
+
+  <ion-card class="ion-text-center ion-padding" [routerLink]='["/mobile/restourant"]' [queryParams]='{id : rest.companyId}' *ngFor='let rest of filtered'
+   [ngStyle]="{'background-image': rest.image}"> 
+    {{rest.name}}
+  </ion-card>
+</ion-content>
