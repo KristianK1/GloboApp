@@ -229,4 +229,42 @@ export class RestServiceService {
     this._dishDetails.next(this.combined);
   }
 
+  getDishesCompany(CompID: number){
+    return this.http.post(this.url, {
+      "db": "Food",
+      "queries": [
+        {
+          "query": "spDishMenu",
+          "params": {
+            "action": "dish",
+            "companyid": CompID
+          },
+          tablename: 'everyMealComp'
+        },
+        {
+          "query": "spDishMenu",
+          "params": {
+              "action": "menu",
+              "companyid": CompID
+          },
+          tablename: 'shortMenu'
+      }
+      ]
+    }).toPromise().then((res: {
+      everyMealComp: Array<GetAllMenusResult>,
+      shortMenu: Array<DishMenuForCompanyResult>,
+    }) => {
+      console.log(res);
+      if (res != null) {
+        //spojit dvije tablice u jednu
+        // console.log(res.everyMealComp);
+        // console.log(res.shortMenu);
+        
+        this.combineTables(res.shortMenu, res.everyMealComp);
+        
+      }
+      return true;
+    });
+  }
+  
 }

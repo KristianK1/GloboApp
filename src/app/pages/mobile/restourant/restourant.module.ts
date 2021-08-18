@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { RestourantPageRoutingModule } from './restourant-routing.module';
 
 import { RestourantPage } from './restourant.page';
+import { DashMealComponent } from 'src/app/components/dash-meal/dash-meal.component';
 
 @NgModule({
   imports: [
@@ -15,6 +16,6 @@ import { RestourantPage } from './restourant.page';
     IonicModule,
     RestourantPageRoutingModule
   ],
-  declarations: [RestourantPage]
+  declarations: [RestourantPage, DashMealComponent]
 })
 export class RestourantPageModule {}

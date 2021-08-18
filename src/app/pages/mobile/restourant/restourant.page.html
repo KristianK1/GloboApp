@@ -1,9 +1,21 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>restourant</ion-title>
-  </ion-toolbar>
+  <ion-button [routerLink]='["/mobile/tabs/dashboard"]'>
+    <ion-icon name="arrow-back-outline"></ion-icon>
+  </ion-button>
+  <div>
+    {{currentRestName}}
+  </div>
+  <div class="days">
+    <div [ngClass]="{'day': true, 'active-day': day == currentDay}" *ngFor="let day of days" color="primary" (click)="changeDay(day)">
+      <span class="dayName"><h2>{{daysNames[day-1]}}</h2></span>
+    </div>
+  </div>
+
 </ion-header>
 
-<ion-content>
 
+<ion-content>
+  <div *ngFor="let dish of dishesDay">
+    <app-dash-meal [order]="dish" (click)="addToCart(dish)"></app-dash-meal>
+  </div>
 </ion-content>

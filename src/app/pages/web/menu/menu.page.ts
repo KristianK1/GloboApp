@@ -19,8 +19,8 @@ export class MenuPage implements OnInit {
 
   searchStr: string = "";
 
-  mealsGrid1: Array<Order> = [];
-  mealsGrid2: Array<Order> = [];
+  //mealsGrid1: Array<Order> = [];
+  //mealsGrid2: Array<Order> = [];
 
 
   meals1: Array<DishDetail> = [];
@@ -78,8 +78,8 @@ export class MenuPage implements OnInit {
     }
     this.meals1 = this.meals1.filter(o => o.day != this.currentDay);
 
-    this.mealsGrid1 = this.meal2order(this.meals1);
-    this.mealsGrid2 = this.meal2order(this.meals2);
+    //this.mealsGrid1 = this.meal2order(this.meals1);
+    //this.mealsGrid2 = this.meal2order(this.meals2);
   }
 
   changeDay(d: number) {
@@ -96,7 +96,7 @@ export class MenuPage implements OnInit {
   }
 
 
-  meal2order(meals: Array<DishDetail>): Array<Order> {
+  /*meal2order(meals: Array<DishDetail>): Array<Order> {
     let ret: Array<Order> = [];
     for (let meal of meals) {
       let temp: Order = {
@@ -117,7 +117,7 @@ export class MenuPage implements OnInit {
       ret.push(temp);
     }
     return ret;
-  }
+  }*/
 
   deleteDay(id: number) {
     console.log("brisem" + id);

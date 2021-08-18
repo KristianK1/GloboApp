@@ -5,5 +5,7 @@
 </ion-header>
 
 <ion-content>
-
+<div *ngFor="let order of displayOrders">
+  <app-dash-meal [order]="order"></app-dash-meal>
+</div>
 </ion-content>

@@ -31,9 +31,7 @@ export class DashboardPage implements OnInit {
 
   showRest(){
     this.filtered = this.allRestt.filter(o => o.name.toLowerCase().includes(this.searchStr.toLowerCase()));
-    for(let res of this.filtered){
-      console.log(res.companyId);
-    }
+   
     this.setImages();
   }
 

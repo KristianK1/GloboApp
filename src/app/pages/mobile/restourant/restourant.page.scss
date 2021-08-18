@@ -1,0 +1,29 @@
+.active-day {
+    color:  #1CBA5B;
+    background-color: white;
+}
+
+.days {
+    float: top;
+    width: 100%;
+    height: 6%;
+    background-color: #1CBA5B;
+
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+    // box-sizing: content-box;
+}
+
+.day{
+    height: 100%;
+    text-align: center;
+    width: 20%
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: space-around;
+}
+
+.dayName{
+    float:inline-start;
+}
