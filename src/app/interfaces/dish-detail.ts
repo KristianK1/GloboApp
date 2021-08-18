@@ -7,4 +7,6 @@ export interface DishDetail {
     soup: boolean,
     salad: boolean,
     bread: boolean,
+
+    incart?: boolean,
 }

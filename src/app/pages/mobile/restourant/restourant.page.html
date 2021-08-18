@@ -17,6 +17,14 @@
 
 <ion-content>
   <div *ngFor="let dish of dishesDay">
-    <app-dash-meal [order]="dish" (click)="addToCart(dish)"></app-dash-meal>
+    <app-dash-meal [order]="dish" (click)="addToCart(dish)" [dishSelected]="dish.incart"></app-dash-meal>
   </div>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button [disabled]="!cartField?.length" [routerLink]="['/mobile/tabs/cart']">
+      <ion-icon name="cart"></ion-icon>
+
+    </ion-fab-button>
+    <ion-badge>{{cartField?.length || 0}}</ion-badge>
+  </ion-fab>
 </ion-content>

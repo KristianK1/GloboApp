@@ -32,7 +32,7 @@ export class DashboardPage implements OnInit {
       this.orders = val;
       this.orders = this.orders.filter(o => o.jelo.toLowerCase().includes(this.searchStr.toLowerCase()));
       
-      this.orders = this.orders.filter(o => o.dan == this.daysHrv[this.currentDay]);  //zgazeno
+      this.orders = this.orders.filter(o => o.dan == this.daysHrv[this.currentDay-1]);  //zgazeno
       //console.log(this.orders.length);
 
     });

@@ -22,6 +22,8 @@ export class RestourantPage implements OnInit {
   allDishes: DishDetail[] = [];
   dishesDay: DishDetail[] = [];
 
+  cartField : DishDetail[] = [];
+
   constructor(private route: ActivatedRoute, private restService: RestServiceService, private cartService: CartService) { }
 
   ngOnInit() {
@@ -30,8 +32,14 @@ export class RestourantPage implements OnInit {
       console.log(params.id);
       this.currentRestID = params.id;
       this.currentRestName = this.getRestName();
-    });
 
+      this.cartService._shopCart.subscribe(storage =>{
+        this.cartField=storage;
+        console.log(this.cartField);
+      });
+      //ovdje mozda se subscribat na cartService behavrial
+    });
+    this.allDishes = this.cartService._shopCart.getValue(); //idk makni ovo u slucaju bugova
     this.askforDishDetail();
 
     this.restService._dishDetails.subscribe((res: any) => {
@@ -57,9 +65,12 @@ export class RestourantPage implements OnInit {
 
   setTodayArray() {
     this.dishesDay = this.allDishes.filter(o => o.day == this.currentDay);
-    console.log(this.allDishes);
-
-    console.log(this.dishesDay);
+    this. dishesDay = this.dishesDay.map(dish =>{
+      dish.incart = !!this.cartField.find(o => o.day === dish.day && o.DishId === dish.DishId);
+      return dish;
+    });
+    //console.log(this.allDishes);
+    //console.log(this.dishesDay);
   }
 
   getRestName(): string {
@@ -68,7 +79,9 @@ export class RestourantPage implements OnInit {
 
   addToCart(dish: DishDetail) {
     console.log(dish);
-
-    this.cartService.addToCart(dish);
+    dish.incart=this.cartService.addToCart(dish);
   }
+
+
+  
 }

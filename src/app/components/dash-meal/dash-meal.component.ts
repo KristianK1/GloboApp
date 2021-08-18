@@ -9,6 +9,7 @@ import { Order } from 'src/app/interfaces/Order';
 })
 export class DashMealComponent implements OnInit {
   @Input() order: DishDetail;
+  @Input() dishSelected: boolean;
 
   imgSrc: string="";
   jeloName: string="";
