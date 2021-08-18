@@ -15,6 +15,7 @@ export class CartPage implements OnInit {
   ngOnInit() {
     this.cartService._shopCart.subscribe(val =>{
       this.displayOrders = val;
+      this.displayOrders = this.displayOrders.sort((a,b) => a.day - b.day);
     })
   }
   orderEverything(){

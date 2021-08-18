@@ -45,7 +45,7 @@ export class DashboardPage implements OnInit {
     console.log("ovdje");
     if (this.orders != null) {
       this.orders = this.orders.filter(o => o.jelo.toLowerCase().includes(this.searchStr.toLowerCase()));
-      this.orders=this.orders.filter(o => o.dan == this.daysHrv[this.currentDay]);
+      this.orders=this.orders.filter(o => o.dan == this.daysHrv[this.currentDay-1]);
       console.log(this.orders);
     }
   }
