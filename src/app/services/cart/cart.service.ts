@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { PRIMARY_OUTLET } from '@angular/router';
+import { ToastController } from '@ionic/angular';
 import { BehaviorSubject } from 'rxjs';
 import { DishDetail } from 'src/app/interfaces/dish-detail';
 import { DishServiceService } from '../dishService/dish-service.service';
@@ -16,7 +18,7 @@ export class CartService {
 
   _shopCart: BehaviorSubject<Array<DishDetail>> = new BehaviorSubject<Array<DishDetail>>(null);
 
-  constructor(private userService: UserService, private http: HttpClient, private storageService: StorageService) {
+  constructor(private userService: UserService, private http: HttpClient, private storageService: StorageService, private toastControler: ToastController) {
     this.getCart();
   }
 
@@ -60,25 +62,38 @@ export class CartService {
     return (index===-1);
   }
 
-  orderCart(){
+  async orderCart(){
     for(let order of this._shopCart.getValue()){
-      this.placeOrder(order.DishId, order.day);
+     await this.placeOrder(order.DishId, order.day);
     }
+
+
     this.shopCart=[];
     this._shopCart.next([]);
-    this.storageService.setData("cart", this.shopCart); //shop cart je empty
-
+    this.storageService.removeData("cart");
+    
+    this.presentToast();
       //this.shopCart = this.shopCart.filter(o => o.DishId!=order.DishId && o.day!=order.day); //ne znam je valja uvjet
       //this._shopCart.next(this.shopCart);
   }
-
-  placeOrder(dishID: number, day: number){
-    this.placeOrderFinal(this.userService._user.getValue().userId, dishID, day);
+  
+  async presentToast() {
+    const toast = await this.toastControler.create({
+      message: 'Order confirmed',
+      duration: 2000,
+      color: 'primary',
+    })
+    toast.present();
   }
 
-  placeOrderFinal(userID: number, dishID: number, day: number){
+  async placeOrder(dishID: number, day: number){
+    await this.placeOrderFinal(this.userService._user.getValue().userId, dishID, day);
+  }
+
+  async placeOrderFinal(userID: number, dishID: number, day: number){
     console.log("trejtngdrkg");
-    this.http.post(this.url, {
+
+    await this.http.post(this.url, {
       "db": "Food",
       "queries": [
         {
@@ -94,4 +109,26 @@ export class CartService {
       console.log(res);
     });
   }
+
+  makeOrderBody(){
+   
+  }
+
+
+  // async finishOrder(){
+  //   const order = this._shopCart.getValue()[0];
+  //   await this.http.post(this.url, {
+  //     "db": "Food",
+  //     "queries": [
+  //       {
+  //         "query": "spOrder",
+  //           "params": {
+  //               "userid": this.userService.user.userId,
+  //               "dishid": order.DishId,
+  //               "day": order.day,
+  //           }
+  //       }
+  //     ]
+  //   }).toPromise();
+  // }
 }

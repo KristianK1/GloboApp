@@ -5,13 +5,11 @@
 </ion-header>
 
 <ion-content>
-<div *ngFor="let order of displayOrders">
-  <app-dash-meal [order]="order"></app-dash-meal>
-</div>
+  <div *ngFor="let order of displayOrders">
+    <app-dash-meal [order]="order"></app-dash-meal>
+  </div>
 </ion-content>
 
 <ion-footer>
-  <ion-toolbar>
-    <ion-button (click)="orderEverything()">Order cart</ion-button>
-  </ion-toolbar>
+  <ion-button *ngIf="displayOrders.length" (click)="orderEverything()">Order cart</ion-button>
 </ion-footer>
