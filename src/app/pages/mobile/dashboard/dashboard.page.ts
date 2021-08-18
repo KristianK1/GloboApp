@@ -20,7 +20,6 @@ export class DashboardPage implements OnInit {
       if(value.length){
         this.allRestt=value;
         this.showRest();
-        
       }
     });
   }

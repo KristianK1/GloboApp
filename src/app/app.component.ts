@@ -33,8 +33,16 @@ export class AppComponent {
     if(rez){
       this.userService.user=rez;
       this.userService._user.next(rez);
-      this.router.navigate(['/' + (this.userService.isMobile? 'mobile/tabs'  : 'web') + '/dashboard'], {replaceUrl: true});
-      //this.router.navigate(['/web/dashboard'], {replaceUrl: true});
+      if(this.isMobileX){
+        this.router.navigate(['/' + (this.userService.isMobile? 'mobile/tabs'  : 'web') + '/dashboard'], {replaceUrl: true});
+
+      }
+      else{
+        if(!this.userService.user.companyId){
+          this.userService.logout();
+        }
+      }
+      
     }
   }
 

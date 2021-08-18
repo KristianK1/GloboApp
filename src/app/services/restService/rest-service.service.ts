@@ -9,7 +9,7 @@ import { Order } from 'src/app/interfaces/Order';
 import { Restourant } from 'src/app/interfaces/restourant';
 import { MenuDish } from 'src/app/interfaces/restourant';
 import { UserService } from '../user/user.service';
-import {map} from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })

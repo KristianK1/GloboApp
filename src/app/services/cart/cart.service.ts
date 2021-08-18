@@ -11,7 +11,7 @@ import { UserService } from '../user/user.service';
 export class CartService {
   url: string = "https://jupitermobiletest.jupiter-software.com:30081/jupitermobilex/gen/api/food";
 
-  private shopCart: DishDetail[] = [];
+  private shopCart: DishDetail[] = []; // ne treba mi?
 
   _shopCart: BehaviorSubject<Array<DishDetail>> = new BehaviorSubject<Array<DishDetail>>(null);
 
@@ -33,7 +33,7 @@ export class CartService {
   }
 
   async addToCart(meal: DishDetail){
-    this.getCart();
+    await this.getCart();
     this.shopCart.push(meal);
     this.storageService.setData("cart", this.shopCart);
     this._shopCart.next(this.shopCart);
@@ -44,9 +44,12 @@ export class CartService {
   orderCart(){
     for(let order of this.shopCart){
       this.placeOrder(order.DishId, order.day);
-      this.shopCart = this.shopCart.filter(o => o.DishId!=order.DishId && o.day!=order.day); //ne znam je valja uvjet
-      this._shopCart.next(this.shopCart);
     }
+    this.shopCart=[];
+    this._shopCart.next([]);
+
+      //this.shopCart = this.shopCart.filter(o => o.DishId!=order.DishId && o.day!=order.day); //ne znam je valja uvjet
+      //this._shopCart.next(this.shopCart);
   }
 
   placeOrder(dishID: number, day: number){

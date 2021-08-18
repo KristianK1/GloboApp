@@ -90,16 +90,21 @@ export class UserService {
         }
       ]
     }).subscribe((res: Array<User>) => {  //user treba bit velikim slovom
-      console.log(res);
+      
       if (res.length == 1) {
+        
+        if (!this.isMobile && !res[0].companyId) {
+          alert("Niste prijavljeni kao restoran");
+          return;
+        }
         console.log("logiran");
         this.user = res[0];
         this._user.next(res[0]);
-      
+
         this.storageService.setData("user", this.user);
-        
-        this.router.navigate(['/' + (this.isMobile? 'mobile/tabs'  : 'web') + '/dashboard'], {replaceUrl: true});
-        
+
+        this.router.navigate(['/' + (this.isMobile ? 'mobile/tabs' : 'web') + '/dashboard'], { replaceUrl: true });
+
       }
     });
   }
@@ -107,14 +112,14 @@ export class UserService {
   logout() {
     this.storageService.removeData("user");
     this.storageService.removeData("cart");
-    
+
     this._user.next(null);
     this.user = null;
   }
 
-  isCompany(): number{
-    if(this.user!=null){
-      if(this.user.companyId!=null) return 98;
+  isCompany(): number {
+    if (this.user != null) {
+      if (this.user.companyId != null) return 98;
     }
     return 99;
   }

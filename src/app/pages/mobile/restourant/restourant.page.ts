@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute} from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { DishDetail } from 'src/app/interfaces/dish-detail';
 import { CartService } from 'src/app/services/cart/cart.service';
 import { RestServiceService } from 'src/app/services/restService/rest-service.service';
@@ -29,15 +29,17 @@ export class RestourantPage implements OnInit {
     this.route.queryParams.subscribe(params => {
       console.log(params.id);
       this.currentRestID = params.id;
-      this.currentRestName=this.getRestName();
+      this.currentRestName = this.getRestName();
     });
 
     this.askforDishDetail();
 
     this.restService._dishDetails.subscribe((res: any) => {
-      console.log(res);
-      this.allDishes = res;
-      this.setTodayArray();
+      if (res) {
+        console.log(res);
+        this.allDishes = res;
+        this.setTodayArray();
+      }
     });
   }
 
@@ -58,16 +60,15 @@ export class RestourantPage implements OnInit {
     console.log(this.allDishes);
 
     console.log(this.dishesDay);
-
   }
 
   getRestName(): string {
     return this.restService._allRestaurants.getValue().filter(o => o.companyId == this.currentRestID)[0].name;
   }
 
-  addToCart(dish: DishDetail){
+  addToCart(dish: DishDetail) {
     console.log(dish);
-    
+
     this.cartService.addToCart(dish);
   }
 }
