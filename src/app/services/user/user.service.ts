@@ -106,6 +106,8 @@ export class UserService {
 
   logout() {
     this.storageService.removeData("user");
+    this.storageService.removeData("cart");
+    
     this._user.next(null);
     this.user = null;
   }

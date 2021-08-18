@@ -17,5 +17,7 @@ export class CartPage implements OnInit {
       this.displayOrders = val;
     })
   }
-
+  orderEverything(){
+    this.cartService.orderCart();
+  }
 }
