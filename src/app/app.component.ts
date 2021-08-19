@@ -15,8 +15,6 @@ export class AppComponent {
     // this.router.navigate(['login']);
     console.log(this.router.url);
     this.appInit();
-
-
   }
 
   isMobileX: Boolean = false;

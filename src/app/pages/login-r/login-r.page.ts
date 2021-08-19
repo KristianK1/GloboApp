@@ -28,8 +28,8 @@ export class LoginRPage implements OnInit {
     this.mode=1;
     // this.email_login="vedran.prpic1@gmail.com"
     // this.pass_login="lozinka"
-    this.email_login="Kristian2";
-    this.pass_login="Kristian2";
+    this.email_login="Q";
+    this.pass_login="Q";
   } 
 
 

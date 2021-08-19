@@ -2,9 +2,10 @@
   <!-- <ion-button [routerLink]='["/mobile/tabs/dashboard"]'>
     <ion-icon name="arrow-back-outline"></ion-icon>
   </ion-button> -->
-  <ion-back-button></ion-back-button>
+  
   <div>
-    {{currentRestName}}
+    <ion-back-button style="width:10%"></ion-back-button>
+    <ion-text>{{currentRestName}}</ion-text>
   </div>
   <div class="days">
     <div [ngClass]="{'day': true, 'active-day': day == currentDay}" *ngFor="let day of days" color="primary" (click)="changeDay(day)">

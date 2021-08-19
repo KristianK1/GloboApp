@@ -55,7 +55,11 @@ const routes: Routes = [
   {
     path: 'restourant',
     loadChildren: () => import('./pages/mobile/restourant/restourant.module').then( m => m.RestourantPageModule)
+  },  {
+    path: 'my-orders',
+    loadChildren: () => import('./pages/mobile/my-orders/my-orders.module').then( m => m.MyOrdersPageModule)
   },
+
 
 ];
 @NgModule({
