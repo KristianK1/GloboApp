@@ -5,7 +5,7 @@ import { DishDetail } from 'src/app/interfaces/dish-detail';
 import { DishForCompanyResult } from 'src/app/interfaces/dish-for-company-result';
 import { DishMenuForCompanyResult } from 'src/app/interfaces/dish-menu-for-company-result';
 import { GetAllMenusResult } from 'src/app/interfaces/get-all-menus-result';
-import { Order } from 'src/app/interfaces/Order';
+import { Order } from 'src/app/interfaces/order';
 import { Restourant } from 'src/app/interfaces/restourant';
 import { MenuDish } from 'src/app/interfaces/restourant';
 import { UserService } from '../user/user.service';

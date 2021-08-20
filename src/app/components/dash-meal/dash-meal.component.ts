@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { DishDetail } from 'src/app/interfaces/dish-detail';
-import { Order } from 'src/app/interfaces/Order';
 
 @Component({
   selector: 'app-dash-meal',
