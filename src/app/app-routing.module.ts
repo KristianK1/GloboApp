@@ -16,7 +16,10 @@ const routes: Routes = [
         path: 'restourant',
         loadChildren: () => import('./pages/mobile/restourant/restourant.module').then( m => m.RestourantPageModule)
       },
-      
+      {
+        path: 'my-orders',
+        loadChildren: () => import('./pages/mobile/my-orders/my-orders.module').then( m => m.MyOrdersPageModule)
+      },
     ], resolve: {
       restourant: RestResolverService
     },
@@ -52,15 +55,10 @@ const routes: Routes = [
     path: '**',
     loadChildren: () => import('./pages/login-r/login-r.module').then(m => m.LoginRPageModule)
   },
-  {
-    path: 'restourant',
-    loadChildren: () => import('./pages/mobile/restourant/restourant.module').then( m => m.RestourantPageModule)
-  },  {
-    path: 'my-orders',
-    loadChildren: () => import('./pages/mobile/my-orders/my-orders.module').then( m => m.MyOrdersPageModule)
-  },
-
-
+  // {
+  //   path: 'restourant',
+  //   loadChildren: () => import('./pages/mobile/restourant/restourant.module').then( m => m.RestourantPageModule)
+  // },
 ];
 @NgModule({
   imports: [

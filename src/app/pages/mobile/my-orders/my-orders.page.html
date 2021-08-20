@@ -1,7 +1,10 @@
 <ion-header>
-
+  <ion-back-button class="backButton"></ion-back-button>
+  <h2 class="titleMyOrders">My orders</h2>
 </ion-header>
 
 <ion-content>
-
+  <div *ngFor="let order of myOrders" class="ordersDiv">
+    <app-order [order]="order" class="order"></app-order>
+  </div>
 </ion-content>

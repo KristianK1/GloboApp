@@ -12,20 +12,26 @@
     </ion-header>
 
     <ion-content>
+
       <ion-list>
-        <ion-item (click)="closeMenu()" [routerLink]="['/web/dashboard']">
+        <ion-item [hidden]="!isMobileX" (click)="closeMenu()" [routerLink]="['/mobile/my-orders']">
+          <ion-label>
+            My Orders
+          </ion-label>
+        </ion-item>
+        <ion-item [hidden]="isMobileX" (click)="closeMenu()" [routerLink]="['/web/dashboard']">
           <ion-label>
             Dashboard
           </ion-label>
         </ion-item>
 
-        <ion-item (click)="closeMenu()" [routerLink]="['/web/menu']">
+        <ion-item [hidden]="isMobileX" (click)="closeMenu()" [routerLink]="['/web/menu']">
           <ion-label>
             Menu
           </ion-label>
         </ion-item>
 
-        <ion-item (click)="closeMenu()" [routerLink]="['/web/new-dish']">
+        <ion-item [hidden]="isMobileX" (click)="closeMenu()" [routerLink]="['/web/new-dish']">
           <ion-label>
             Add  new dish
           </ion-label>

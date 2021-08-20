@@ -1,11 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { PRIMARY_OUTLET } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { BehaviorSubject } from 'rxjs';
-import { delay } from 'rxjs/operators';
 import { DishDetail } from 'src/app/interfaces/dish-detail';
-import { DishServiceService } from '../dishService/dish-service.service';
+import { MyOrdersResult } from 'src/app/interfaces/my-orders-result';
+import { MyOrdersPageRoutingModule } from 'src/app/pages/mobile/my-orders/my-orders-routing.module';
 import { StorageService } from '../storage/storage.service';
 import { UserService } from '../user/user.service';
 
@@ -17,16 +16,19 @@ export class CartService {
 
   private shopCart: DishDetail[] = []; // ne treba mi?
 
+  nOffOrders:number=-1;
+
   _shopCart: BehaviorSubject<Array<DishDetail>> = new BehaviorSubject<Array<DishDetail>>(null);
-  //myOrders: BehaviorSubject<Array<Dish
+
+  myOrders: BehaviorSubject<Array<DishDetail>> = new BehaviorSubject<Array<DishDetail>>(null);
 
   constructor(private userService: UserService, private http: HttpClient, private storageService: StorageService, private toastControler: ToastController) {
     this.getCart();
-    
+
   }
 
   async getCart() {
-    
+
 
     let rez = await this.storageService.getData("cart");
     console.log("naden cart");
@@ -38,6 +40,7 @@ export class CartService {
       this.shopCart = [];
     }
     this._shopCart.next(this.shopCart);
+    this.nOffOrders=this._shopCart.getValue().length;
   }
 
   addToCart(meal: DishDetail) {
@@ -72,7 +75,7 @@ export class CartService {
       this.placeOrder(order.DishId, order.day);
     }
 
-
+    this.getMyOrders();
     this.shopCart = [];
     this._shopCart.next([]);
     this.storageService.removeData("cart");
@@ -82,7 +85,7 @@ export class CartService {
     //this._shopCart.next(this.shopCart);
   }
 
-  async presentToast(s :string) {
+  async presentToast(s: string) {
     const toast = await this.toastControler.create({
       message: s,
       duration: 2000,
@@ -93,8 +96,8 @@ export class CartService {
 
   placeOrder(dishID: number, day: number) {
     this.placeOrderFinal(this.userService._user.getValue().userId, dishID, day);
-    
-    
+
+
   }
 
   async placeOrderFinal(userID: number, dishID: number, day: number) {
@@ -113,7 +116,7 @@ export class CartService {
         }
       ]
     }).subscribe((res: any) => {
-      console.log(res);
+      //console.log(res);
     });
   }
 
@@ -133,12 +136,31 @@ export class CartService {
           }
         }
       ]
-    }).subscribe((res: any) => {
-      console.log(("orders begin"));
+    }).subscribe((res: Array<MyOrdersResult>) => {
       console.log(res);
-      console.log("orders end");
-      
+      if (res) {
+        this.myOrders.next(this.userOrdersToDishDetails(res));
+      }
     });
+  }
+
+  userOrdersToDishDetails(data: Array<MyOrdersResult>): Array<DishDetail> {
+    let ret: Array<DishDetail> = [];
+    for (let order of data) {
+      let temp: DishDetail = {
+        DishId: null,
+        day: order.day,
+
+        Name: order.dishName,
+        des: null,
+        soup: order.soup,
+        salad: order.salad,
+        bread: order.bread,
+      }
+      ret.push(temp);
+    }
+
+    return ret;
   }
 
   // async finishOrder(){

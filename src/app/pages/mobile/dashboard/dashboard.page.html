@@ -1,11 +1,13 @@
 <ion-header>
-  <ion-searchbar showCancelButton="focus" (ionChange)=search()></ion-searchbar>
+  <ion-searchbar showCancelButton="focus" (ionChange)=search() [(ngModel)]="searchStr"></ion-searchbar>
 </ion-header>
 
 <ion-content>
 
-  <ion-card class="ion-text-center ion-padding slikaFit" [routerLink]='["/mobile/restourant"]' [queryParams]='{id : rest.companyId}' *ngFor='let rest of filtered'
-   [ngStyle]="{'background-image': rest.image}"> 
-    {{rest.name}}
+  <ion-card class="ion-text-center ion-padding slikaFit" [routerLink]='["/mobile/restourant"]'
+    [queryParams]='{id : rest.companyId}' *ngFor='let rest of filtered' [ngStyle]="{'background-image': rest.image}">
+    <ion-text class="restName" [ngStyle]="{'background-image':none}">
+      <h3><b>{{rest.name}}</b></h3>
+    </ion-text>
   </ion-card>
 </ion-content>
