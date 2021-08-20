@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { DishDetail } from 'src/app/interfaces/dish-detail';
-import { GetAllMenusResult } from 'src/app/interfaces/get-all-menus-result';
-import { Order } from 'src/app/interfaces/Order';
+// import { GetAllMenusResult } from 'src/app/interfaces/get-all-menus-result';
+// import { Order } from 'src/app/interfaces/Order';
 import { RestServiceService } from 'src/app/services/restService/rest-service.service';
 //import { DashMealComponent } from 'src/app/components/dash-meal/dash-meal.component';
 

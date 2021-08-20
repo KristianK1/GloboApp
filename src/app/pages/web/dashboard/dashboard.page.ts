@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { Order } from 'src/app/interfaces/Order';
+import { Order } from 'src/app/interfaces/order';
 import { RestServiceService } from 'src/app/services/restService/rest-service.service';
 
 @Component({
