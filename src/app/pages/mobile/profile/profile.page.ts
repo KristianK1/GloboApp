@@ -10,6 +10,7 @@ export class ProfilePage implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.log("hehe");
   }
 
 }

@@ -16,11 +16,13 @@ export class CartService {
 
   private shopCart: DishDetail[] = []; // ne treba mi?
 
-  nOffOrders:number=-1;
+  nOffOrders: number = -1;
 
   _shopCart: BehaviorSubject<Array<DishDetail>> = new BehaviorSubject<Array<DishDetail>>(null);
 
   myOrders: BehaviorSubject<Array<DishDetail>> = new BehaviorSubject<Array<DishDetail>>(null);
+
+  promises: Array<Promise<any>> = [];
 
   constructor(private userService: UserService, private http: HttpClient, private storageService: StorageService, private toastControler: ToastController) {
     this.getCart();
@@ -40,7 +42,7 @@ export class CartService {
       this.shopCart = [];
     }
     this._shopCart.next(this.shopCart);
-    this.nOffOrders=this._shopCart.getValue().length;
+    this.nOffOrders = this._shopCart.getValue().length;
   }
 
   addToCart(meal: DishDetail) {
@@ -74,13 +76,19 @@ export class CartService {
     for (let order of this._shopCart.getValue()) {
       this.placeOrder(order.DishId, order.day);
     }
+    console.log('gotov');
 
-    this.getMyOrders();
-    this.shopCart = [];
-    this._shopCart.next([]);
-    this.storageService.removeData("cart");
+    Promise.all(this.promises).then((x) => {
 
-    this.presentToast("Order Confirmed");
+
+
+      this.getMyOrders(); //stavit u ng init ordersa
+      this.shopCart = [];
+      this._shopCart.next([]);
+      this.storageService.removeData("cart");
+
+      this.presentToast("Order Confirmed");
+    });
     //this.shopCart = this.shopCart.filter(o => o.DishId!=order.DishId && o.day!=order.day); //ne znam je valja uvjet
     //this._shopCart.next(this.shopCart);
   }
@@ -100,10 +108,11 @@ export class CartService {
 
   }
 
+
   async placeOrderFinal(userID: number, dishID: number, day: number) {
     console.log("trejtngdrkg");
 
-    this.http.post(this.url, {
+    this.promises.push(this.http.post(this.url, {
       "db": "Food",
       "queries": [
         {
@@ -115,9 +124,7 @@ export class CartService {
           }
         }
       ]
-    }).subscribe((res: any) => {
-      //console.log(res);
-    });
+    }).toPromise());
   }
 
   makeOrderBody() {
