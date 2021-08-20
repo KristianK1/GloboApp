@@ -17,7 +17,7 @@ export class DashboardPage implements OnInit {
   
   ngOnInit() {
     this.restService._allRestaurants.subscribe( value => {
-      if(value.length){
+      if(value?.length){
         this.allRestt=value;
         this.showRest();
       }
