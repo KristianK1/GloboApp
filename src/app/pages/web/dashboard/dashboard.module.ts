@@ -8,15 +8,16 @@ import { DashboardPageRoutingModule } from './dashboard-routing.module';
 
 import { DashboardPage } from './dashboard.page';
 
-import { WeekBarComponent } from 'src/app/components/week-bar/week-bar.component';
 import { DashMealQComponent } from 'src/app/components/dash-meal-q/dash-meal-q.component';
+import { ComponentsModule } from 'src/app/components/components/components.module';
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    DashboardPageRoutingModule
+    DashboardPageRoutingModule,
+    ComponentsModule
   ],
-  declarations: [DashboardPage, WeekBarComponent, DashMealQComponent],
+  declarations: [DashboardPage],
 })
 export class DashboardPageModule {}

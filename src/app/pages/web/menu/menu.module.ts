@@ -9,14 +9,15 @@ import { MenuPageRoutingModule } from './menu-routing.module';
 import { MenuPage } from './menu.page';
 
 import { DashMealComponent } from 'src/app/components/dash-meal/dash-meal.component';
-import { WeekBarComponent } from 'src/app/components/week-bar/week-bar.component';
+import { ComponentsModule } from 'src/app/components/components/components.module';
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    MenuPageRoutingModule
+    MenuPageRoutingModule,
+    ComponentsModule
   ],
-  declarations: [MenuPage, WeekBarComponent, DashMealComponent]
+  declarations: [MenuPage]
 })
 export class MenuPageModule {}
