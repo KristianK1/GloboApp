@@ -11,24 +11,42 @@ export class DashMealQComponent implements OnInit {
 
   imgSrc: string;
   jeloName: string;
-  jeloDes: string ="";
+  jeloDes: string = "";
   KompIme: string;
+  quantity: string = "";
   constructor() { }
 
   ngOnInit() {
-    console.log("hello");
+    console.log(this.order);
     
     this.imgSrc = "assets/images/jelo1.png";
     this.jeloName = this.order.jelo;
-    if(!!this.order.Salad) this.jeloDes +=" Salata: " + this.order.Salad;
-    if(!!this.order.bread) this.jeloDes +=" Bread: "  + this.order.bread;
-    if(!!this.order.soup) this.jeloDes +=" Supa: "   + this.order.soup;
 
-    if(!!this.order.firma){
-      this.KompIme="Kompanija: "+this.order.firma;
+
+    if (!!this.order.bread) this.jeloDes += " kruh,"
+    if (!!this.order.soup) this.jeloDes += " juha,"
+    if (!!this.order.Salad) this.jeloDes += " salata,";
+
+    if (this.jeloDes != "") this.jeloDes = "Uz jelo ide" + this.jeloDes;
+
+    if (!!this.order.firma) {
+      this.KompIme = "Kompanija: " + this.order.firma;
     }
-    else if(!!this.order.narucitelj){
-      this.KompIme="Ime naručitelja: "+this.order.narucitelj;
+    else if (!!this.order.narucitelj) {
+      this.KompIme = "Ime naručitelja: " + this.order.narucitelj;
     }
+
+    this.quantity = this.order.quantity.toString();
+
+    if (this.order.quantity == 1 || (this.order.quantity > 20 && this.order.quantity % 10 == 1)) {
+      this.quantity += " narudžba";
+    }
+    else if (this.order.quantity % 10 >= 5 || this.order.quantity%10==0 || (this.order.quantity>=10 && this.order.quantity<=20)) {
+      this.quantity += " narudžbi";
+    }
+    else if (this.order.quantity % 10 >= 1 && this.order.quantity % 10 < 5) {
+      this.quantity += " narudžbe";
+    }
+    
   }
 }

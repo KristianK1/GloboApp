@@ -22,7 +22,7 @@
 
 
   <div class="title">
-    ORDERS REVIEW
+    <b>ORDERS REVIEW</b>
   </div>
 
   <div class="searchDiv">
@@ -32,9 +32,9 @@
 
 
   <ion-grid class="gridB">
-    <ion-row>
-      <ion-col *ngFor="let order of orders" sizeLg="3" sizeMd="4" sizeSm="6">
-        <app-dash-meal-q [order]="order"></app-dash-meal-q>
+    <ion-row class="red">
+      <ion-col *ngFor="let order of orders" sizeLg="3" sizeMd="4" sizeSm="6" class="stupac">
+        <app-dash-meal-q [order]="order" class="oneBox"></app-dash-meal-q>
       </ion-col>
 
     </ion-row>

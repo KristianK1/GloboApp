@@ -1,71 +1,23 @@
-// #all{
-//     max-width:25%;
-//     max-height: 25%;
-// }
-
-
-// .DashMealImg {
-//     position:absolute;
-//     top: 10%;
-//     bottom: 10%;
-//     left: 5%;
-//     //margin: 10% 10% 10% 10%;
-//     width: 40%;
-//     height: 80%;
+.all{
+    border: 5px solid #c0c000;
+    margin: 10px 5px;
     
-// }
+}
 
-// .DashMealName {
-//     position:absolute;
-//     top: 10%;
-//     right: 5%;
 
-//     //color: red;
-//     font-size: 20px;
-//     width: 45%;
-//     height: 15%;
-
+.itemm{
+    min-height: 150px;
     
-//     text-align: left;
+}
 
-//     display: flex;
-//     justify-content: center;
-//     align-content: center;
-//     flex-direction: column;
+.textt{
+    height: 100%;
+    top:0%;
+    border: 0px !important;
+}
 
-//     background-color: lime;
-// }
-
-
-
-// .DashMealDes {   
-//     position:absolute;
-
-//     bottom: 20%;
-//     right: 5%;
-
-//     font-size: 15px;
-//     text-align: justify;
-//     width: 45%;
-//     height: 45%;
-// }
-
-// .DashMealButton{
-//     position:absolute;
-
-//     bottom: 3%;
-//     right: 3%;
-
-//     font-size: 15px;
-//     text-align: justify;
-//     width: 30%;
-//     height: 7%;
-
-//     text-align: center;
-
-//     display: flex;
-//     justify-content: center;
-//     align-content: center;
-//     flex-direction: column;
-// }
-
+.quantity{
+    text-align: right;
+    margin: 5% 10% 5% 10%;
+    font-size: larger;
+}

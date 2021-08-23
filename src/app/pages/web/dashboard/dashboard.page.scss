@@ -30,6 +30,7 @@
     top: 5%;
     left: 15%;
     text-align: center;
+    font-size: 30px;
 
     display: flex;
     justify-content: center;
@@ -64,20 +65,17 @@
     position: absolute;
     left:10%;
     top:15%;
-    width: 90%;
+    width: 87%;
     height: 85%;
     overflow: auto;
     box-sizing: content-box;
 }
 
-.single{
-    position: relative;
-    clear: both;
-    width: 90%;
-    height: 90%;
+.red{
+    max-height: 100px;
+
 }
 
-// .app-dash-meal-q{
-//     width: 30%;
-//     height: 30%;
+// .stupac{
+//     min-height: 300px;
 // }
