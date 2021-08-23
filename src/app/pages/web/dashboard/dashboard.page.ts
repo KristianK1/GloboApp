@@ -54,4 +54,9 @@ export class DashboardPage implements OnInit {
     this.changeDay(this.currentDay);
   }
 
+
+  quantity_maker(){
+    //uzme sve narudzbe i dodjeli im quantity, smanjujuci broj elemenata u arrayu
+    
+  }
 }

@@ -11,8 +11,8 @@ export class DashMealQComponent implements OnInit {
 
   imgSrc: string;
   jeloName: string;
-  jeloDes: string;
-
+  jeloDes: string ="";
+  KompIme: string;
   constructor() { }
 
   ngOnInit() {
@@ -20,6 +20,15 @@ export class DashMealQComponent implements OnInit {
     
     this.imgSrc = "assets/images/jelo1.png";
     this.jeloName = this.order.jelo;
-    this.jeloDes = "Salata: "+this.order.Salad + "  Bread: " + this.order.bread +" Supa: " + this.order.soup;
+    if(!!this.order.Salad) this.jeloDes +=" Salata: " + this.order.Salad;
+    if(!!this.order.bread) this.jeloDes +=" Bread: "  + this.order.bread;
+    if(!!this.order.soup) this.jeloDes +=" Supa: "   + this.order.soup;
+
+    if(!!this.order.firma){
+      this.KompIme="Kompanija: "+this.order.firma;
+    }
+    else if(!!this.order.narucitelj){
+      this.KompIme="Ime naručitelja: "+this.order.narucitelj;
+    }
   }
 }

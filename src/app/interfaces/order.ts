@@ -11,4 +11,5 @@ export interface Order {
   firma: string,
   firmaid: number,
   naruciteljid: number,
+  quantity? : number,
 }

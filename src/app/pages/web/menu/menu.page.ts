@@ -22,7 +22,7 @@ export class MenuPage implements OnInit {
   //mealsGrid1: Array<Order> = [];
   //mealsGrid2: Array<Order> = [];
 
-
+  
   meals1: Array<DishDetail> = [];
   meals2: Array<DishDetail> = [];
 
@@ -45,7 +45,7 @@ export class MenuPage implements OnInit {
     if(val)
       this.totalMeal = val;
 
-    this.searchedMeals = this.totalMeal.filter(o => o.Name.includes(this.searchStr));
+    this.searchedMeals = this.totalMeal.filter(o => o.Name.toLowerCase().includes(this.searchStr.toLowerCase()));
     
     
     this.meals1 = [];
@@ -78,8 +78,6 @@ export class MenuPage implements OnInit {
     }
     this.meals1 = this.meals1.filter(o => o.day != this.currentDay);
 
-    //this.mealsGrid1 = this.meal2order(this.meals1);
-    //this.mealsGrid2 = this.meal2order(this.meals2);
   }
 
   changeDay(d: number) {
