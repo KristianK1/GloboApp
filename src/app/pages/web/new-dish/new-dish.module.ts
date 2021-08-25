@@ -7,13 +7,16 @@ import { IonicModule } from '@ionic/angular';
 import { NewDishPageRoutingModule } from './new-dish-routing.module';
 
 import { NewDishPage } from './new-dish.page';
+import { FilepippeModule } from 'src/app/components/filepippe/filepippe.module';
+
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    NewDishPageRoutingModule
+    NewDishPageRoutingModule,
+    FilepippeModule
   ],
   declarations: [NewDishPage]
 })

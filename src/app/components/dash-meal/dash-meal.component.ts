@@ -14,10 +14,12 @@ export class DashMealComponent implements OnInit {
   jeloName: string="";
   jeloDes: string="";
 
+
   constructor() { }
 
   ngOnInit() {
-    this.imgSrc="assets/images/jelo1.png";
+    this.imgSrc=this.order.des.split('|')[0];
+    //this.imgSrc="assets/images/jelo1.png";
     this.jeloName=this.order.Name;
     this.jeloDes= "Salata: "+this.order.soup + "  Bread: " + this.order.bread +" Supa: " + this.order.soup;
   }

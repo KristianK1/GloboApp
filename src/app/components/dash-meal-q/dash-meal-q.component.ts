@@ -19,7 +19,9 @@ export class DashMealQComponent implements OnInit {
   ngOnInit() {
     console.log(this.order);
     
-    this.imgSrc = "assets/images/jelo1.png";
+    //this.imgSrc=this.order..split('|')[0];
+    
+    //this.imgSrc = "assets/images/jelo1.png";
     this.jeloName = this.order.jelo;
 
 
