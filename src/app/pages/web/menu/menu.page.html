@@ -30,9 +30,9 @@
 
   <div class="left">
     <!-- <div class="meal"> -->
-      <ion-grid class="gridB">
-      <ion-row>
-        <ion-col *ngFor="let order of meals1" size="12" class="single" (click)="addDay(order.DishId)" >
+      <ion-grid class="gridB" sizeSm="12">
+      <ion-row size="12">
+        <ion-col *ngFor="let order of meals1" sizeSm="12" class="single" (click)="addDay(order.DishId)" >
           <app-dash-meal [order]="order"></app-dash-meal>
         </ion-col>
         
@@ -72,6 +72,6 @@
 
 
   <button class="btMeal" [routerLink]='["/web/new-dish"]'>
-    ADD NEW MEAL
+    <h3>ADD NEW MEAL</h3>
   </button>
 </ion-content>
