@@ -4,6 +4,7 @@ import { User } from 'src/app/interfaces/user';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { StorageService } from '../storage/storage.service';
+import { CartService } from '../cart/cart.service';
 interface rezultat_registracije {
   userid: number;
 }
@@ -106,6 +107,9 @@ export class UserService {
         this.router.navigate(['/' + (this.isMobile ? 'mobile/tabs' : 'web') + '/dashboard'], { replaceUrl: true });
 
       }
+      else{
+        alert("Neispravni podaci")
+      }
     });
   }
 
@@ -113,6 +117,7 @@ export class UserService {
     this.storageService.removeData("user");
     this.storageService.removeData("cart");
 
+    
     this._user.next(null);
     this.user = null;
   }

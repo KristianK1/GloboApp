@@ -4,8 +4,8 @@
   </ion-button> -->
   
   <div>
-    <ion-back-button style="width:10%"></ion-back-button>
-    <ion-text>{{currentRestName}}</ion-text>
+    <!-- <ion-back-button style="width:10%"></ion-back-button> -->
+    <h3 class="restName">{{currentRestName}}</h3>
   </div>
   <div class="days">
     <div [ngClass]="{'day': true, 'active-day': day == currentDay}" *ngFor="let day of days" color="primary" (click)="changeDay(day)">

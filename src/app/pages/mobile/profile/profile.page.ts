@@ -7,14 +7,15 @@ import { UserService } from 'src/app/services/user/user.service';
   styleUrls: ['./profile.page.scss'],
 })
 export class ProfilePage implements OnInit {
-  displayName: string="";
+  displayName: string = "";
   constructor(private userService: UserService) { }
 
   ngOnInit() {
     console.log("hehe");
 
-    this.userService._user.subscribe(val =>{
-      this.displayName = val.name;
+    this.userService._user.subscribe(val => {
+      if (val)
+        this.displayName = val.name;
     })
   }
 

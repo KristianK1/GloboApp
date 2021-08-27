@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Storage } from '@capacitor/storage';
+import { CartService } from '../cart/cart.service';
 
 @Injectable({
   providedIn: 'root'
@@ -40,4 +41,5 @@ export class StorageService {
 // const removeName = async () => {
 //   await Storage.remove({ key: 'name' });
 // };
+
 }

@@ -18,7 +18,6 @@ export class DashboardPage implements OnInit {
   orders: Array<Order> = [];
   tempOrders: Array<Order> = [];
   searchedOrders: Array<Order> = [];
-  //_orders: BehaviorSubject<Array<Order>> = new BehaviorSubject<Array<Order>>(null);
   searchStr: string = "";
 
 
@@ -52,7 +51,7 @@ export class DashboardPage implements OnInit {
 
 
   makeOrdersForDisplay(allOrders: Array<Order>) {
-    allOrders= this.order2dishDetail(allOrders);
+    allOrders= this.orderAddDescription(allOrders);
     allOrders = allOrders.filter(o => o.jelo.toLowerCase().includes(this.searchStr.toLowerCase()));
     allOrders = allOrders.filter(o => o.dan == this.daysHrv[this.currentDay - 1]);
 
@@ -78,7 +77,7 @@ export class DashboardPage implements OnInit {
     this.orders = allOrders; //orders se ispisuje sa ngfor
   }
 
-  order2dishDetail(orders: Array<Order>): Array<Order>{
+  orderAddDescription(orders: Array<Order>): Array<Order>{
     let ret: Array<DishDetail>=[];
     let allDishes = this.restService._dishDetails.getValue();
 

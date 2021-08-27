@@ -69,10 +69,15 @@ export class NewDishPage implements OnInit {
         return;
       }
 
-      await this.getFileLink(this.filestoragepathLocal); //sprema link u pictureURL
-      if (this.pictureURL == "") {
-        alert("Dogodila se pogreška, pokušajte ponovno");
-        return;
+      if(this.picture==1){
+        this.pictureURL="https://firebasestorage.googleapis.com/v0/b/globoapp-19383.appspot.com/o/filesStorage%2Fjelo1.png?alt=media&token=22185d0d-5374-47ba-8cf2-d52b1cd29f09";
+      }
+      else if(this.picture==0){
+        await this.getFileLink(this.filestoragepathLocal); //sprema link u pictureURL
+        if (this.pictureURL == "") {
+          alert("Dogodila se pogreška, pokušajte ponovno");
+          return;
+        }
       }
       this.http.post(this.url, {
         "db": "Food",

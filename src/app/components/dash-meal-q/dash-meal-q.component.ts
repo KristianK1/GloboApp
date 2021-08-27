@@ -9,10 +9,10 @@ import { Order } from 'src/app/interfaces/order';
 export class DashMealQComponent implements OnInit {
   @Input() order: Order;
 
-  imgSrc: string;
-  jeloName: string;
+  imgSrc: string ="";
+  jeloName: string ="";
   jeloDes: string = "";
-  KompIme: string;
+  KompIme: string="";
   quantity: string = "";
 
   
@@ -21,11 +21,15 @@ export class DashMealQComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.order);
     
-    if(this.order.des)
+    if(this.order.des){
       this.imgSrc=this.order.des.split('|')[0];
-    
+      this.jeloDes=this.order.des.split('|')[1];
+    }
+      if(this.imgSrc.includes("https")==false){
+        this.imgSrc="https://firebasestorage.googleapis.com/v0/b/globoapp-19383.appspot.com/o/filesStorage%2Fjelo1.png?alt=media&token=22185d0d-5374-47ba-8cf2-d52b1cd29f09";
+        this.jeloDes=this.order.des;
+    }
     //this.imgSrc = "assets/images/jelo1.png";
     this.jeloName = this.order.jelo;
 
@@ -33,10 +37,7 @@ export class DashMealQComponent implements OnInit {
     if (!!this.order.soup) this.options += " juha,"
     if (!!this.order.Salad) this.options += " salata,";
     
-    if(this.order.des){
-      this.jeloDes=this.order.des.split('|')[1];
-      this.jeloDes;
-    }
+
       if (this.options != "") this.options = "Uz jelo ide" + this.options;
 
     if (!!this.order.firma) {

@@ -1,12 +1,17 @@
 .slikaFit{
-    min-height: 25%;
     background-size: cover;
     // background-position: center;
+    margin: 2%;
+    height:25%;
+    max-height: 300px;
+    left: 5%;
+    border-radius: 5%;
 }
 
 .restName{
     // background: none;
     // background-image: none;
-    color:black;
-    text-shadow: white 0px 0px 10px;
+    color:lime;
+    text-shadow: white 10px 10px 10px;
+    
 }

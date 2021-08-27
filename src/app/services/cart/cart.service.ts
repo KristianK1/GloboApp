@@ -27,15 +27,24 @@ export class CartService {
   constructor(private userService: UserService, private http: HttpClient, private storageService: StorageService, private toastControler: ToastController) {
     this.getCart();
 
+    userService._user.subscribe(val =>{
+      if(val==null) {
+        this.myOrders.next([]);
+        this.shopCart=[];
+        this._shopCart.next([]);
+        this.myOrders.next([]); //kad se izlogira nestane sve u cartu (nemog drugacije zbog kruznih ovisnosti - ne moze se u userservice dodat cartservice)
+        console.log("brisem sve");
+        
+      }
+    });
   }
+  
 
   async getCart() {
 
 
     let rez = await this.storageService.getData("cart");
-    console.log("naden cart");
     if (rez) {
-      console.log("naden cart2");
       this.shopCart = rez;
     }
     else {
