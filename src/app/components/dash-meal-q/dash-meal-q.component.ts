@@ -14,22 +14,30 @@ export class DashMealQComponent implements OnInit {
   jeloDes: string = "";
   KompIme: string;
   quantity: string = "";
+
+  
+  options: string ="";
+
   constructor() { }
 
   ngOnInit() {
     console.log(this.order);
     
-    //this.imgSrc=this.order..split('|')[0];
+    if(this.order.des)
+      this.imgSrc=this.order.des.split('|')[0];
     
     //this.imgSrc = "assets/images/jelo1.png";
     this.jeloName = this.order.jelo;
 
-
-    if (!!this.order.bread) this.jeloDes += " kruh,"
-    if (!!this.order.soup) this.jeloDes += " juha,"
-    if (!!this.order.Salad) this.jeloDes += " salata,";
-
-    if (this.jeloDes != "") this.jeloDes = "Uz jelo ide" + this.jeloDes;
+    if (!!this.order.bread) this.options += " kruh,"
+    if (!!this.order.soup) this.options += " juha,"
+    if (!!this.order.Salad) this.options += " salata,";
+    
+    if(this.order.des){
+      this.jeloDes=this.order.des.split('|')[1];
+      this.jeloDes;
+    }
+      if (this.options != "") this.options = "Uz jelo ide" + this.options;
 
     if (!!this.order.firma) {
       this.KompIme = "Kompanija: " + this.order.firma;

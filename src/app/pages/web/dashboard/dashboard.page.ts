@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { DishDetail } from 'src/app/interfaces/dish-detail';
 import { Order } from 'src/app/interfaces/order';
 import { RestServiceService } from 'src/app/services/restService/rest-service.service';
+import { __rest } from 'tslib';
 
 @Component({
   selector: 'app-dashboard',
@@ -50,7 +52,7 @@ export class DashboardPage implements OnInit {
 
 
   makeOrdersForDisplay(allOrders: Array<Order>) {
-
+    allOrders= this.order2dishDetail(allOrders);
     allOrders = allOrders.filter(o => o.jelo.toLowerCase().includes(this.searchStr.toLowerCase()));
     allOrders = allOrders.filter(o => o.dan == this.daysHrv[this.currentDay - 1]);
 
@@ -74,5 +76,20 @@ export class DashboardPage implements OnInit {
 
 
     this.orders = allOrders; //orders se ispisuje sa ngfor
+  }
+
+  order2dishDetail(orders: Array<Order>): Array<Order>{
+    let ret: Array<DishDetail>=[];
+    let allDishes = this.restService._dishDetails.getValue();
+
+    for(let order of orders){
+      for(let dish of allDishes){
+        if(order.jelo===dish.Name){
+          order.des=dish.des;
+          break;
+        }
+      }
+    }
+    return orders;
   }
 }

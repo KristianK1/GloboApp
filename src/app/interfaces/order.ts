@@ -12,4 +12,5 @@ export interface Order {
   firmaid: number,
   naruciteljid: number,
   quantity? : number,
+  des?: string,
 }

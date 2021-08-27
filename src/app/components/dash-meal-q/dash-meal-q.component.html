@@ -1,13 +1,16 @@
 <div class="all">
   <ion-item lines="none" class="itemm">
     <ion-thumbnail slot="start">
-      <img src="assets/images/jelo1.png">
+      <img [src]="imgSrc">
     </ion-thumbnail>
 
     <div class="ion-text-wrap textt">
       <h2>{{jeloName}}</h2>
-      <p>{{jeloDes}}</p>
-      <p>{{KompIme}}</p>
+      <p>
+        {{jeloDes}}<br>
+        {{options}}<br><br>
+        {{KompIme}}
+      </p>
 
     </div>
 
